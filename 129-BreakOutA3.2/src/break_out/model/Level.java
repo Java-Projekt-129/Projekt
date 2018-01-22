@@ -9,7 +9,7 @@ import break_out.controller.JSONReader;
  * @author dmlux
  * @author I. Schumacher
  * modified by 	Jan Erik Riede - 675875
- * modified by 	Lorenzo Dal Molin - 678115
+ * modified by 	Lorenzio Dal Molin - 678115
  * Projektgruppe 	129
  */
 public class Level extends Thread {
