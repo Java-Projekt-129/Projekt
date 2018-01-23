@@ -1,19 +1,27 @@
 
 package break_out.model;
 import break_out.Constants;
+
 /**
  * @author Jan Erik Riede 675875, Lorenzo Dal Molin 678115 
  */
 public class Ball {
+	
 	/**
 	 * Dekleration der Variable pos vom Typ position
 	 */
 	private Position pos;
+	
 	/**
 	 * Dekleration der Variable dircetion vom Typ Vektor2D
 	 */
 	private Vector2D direction;
 	
+	/**
+	 * Kostruktoren für die Position und Richtung des Balls
+	 * @param pos
+	 * @param direction
+	 */
 	public Ball(Position pos, Vector2D direction) {
 		this.pos = pos;
 		this.direction = direction;
