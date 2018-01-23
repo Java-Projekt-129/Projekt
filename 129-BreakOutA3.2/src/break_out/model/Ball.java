@@ -2,7 +2,7 @@
 package break_out.model;
 import break_out.Constants;
 /**
- * @author Jan Eriki Riede 675875, Lorenzo Dal Molin 678115 
+ * @author Jan Erik Riede 675875, Lorenzo Dal Molin 678115 
  */
 public class Ball {
 	/**
