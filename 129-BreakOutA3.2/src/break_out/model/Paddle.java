@@ -11,7 +11,7 @@ public class Paddle {
 	private Position pos;
 	/**
 	 * Methode fuer die Position des Paddles 
-	 * @param pos
+	 * @param pos welcher die Postion des Paddles beschreibt
 	 */
 	public Paddle(Position pos) {
 		this.pos = pos;

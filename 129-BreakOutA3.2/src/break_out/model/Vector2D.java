@@ -12,8 +12,8 @@ public class Vector2D {
 	private double dx;
 	private double dy;
 	/** Konstuktor für die Koordinaten
-	 * @param dx
-	 * @param dy
+	 * @param dx fuer die X Koordinaten
+	 * @param dy fuer die Y Koordianten
 	 */
 	public Vector2D(double dx, double dy) {
 		this.dx = dx;
@@ -21,8 +21,8 @@ public class Vector2D {
 	}
 	/**
 	 * Konstruktor fuer die Postion des Balles 
-	 * @param source
-	 * @param target
+	 * @param source fuer die Quellposition
+	 * @param target fuer die Zielposition 
 	 */
 	public Vector2D(Position source, Position target) {
 		dx = target.getX() - source.getX();
@@ -30,7 +30,7 @@ public class Vector2D {
 	}
 	/**
 	 * Ausgabe der Werte
-	 * @return
+	 * @return dx,dy
 	 */
 	public double getDx() {
 		return dx;
@@ -48,7 +48,7 @@ public class Vector2D {
 		this.dy = dy;
 	}
 	/**
-	 * Funktion für das Normalisieren des Vectors 
+	 * Funktion für das Normalisieren des Vektors 
 	 */
 	public void rescale() {
 		double length = Math.sqrt(Math.pow(dx,2)+Math.pow(dy, 2));

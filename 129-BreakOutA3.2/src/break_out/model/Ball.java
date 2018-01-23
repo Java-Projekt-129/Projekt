@@ -2,10 +2,16 @@
 package break_out.model;
 import break_out.Constants;
 /**
- * @author Jan Eriki Riede 675875, Lorenzo Dal Molin 678115 
+ * @author Jan Erik Riede 675875, Lorenzo Dal Molin 678115 
  */
 public class Ball {
+	/**
+	 * Dekleration der Variable pos vom Typ position
+	 */
 	private Position pos;
+	/**
+	 * Dekleration der Variable dircetion vom Typ Vektor2D
+	 */
 	private Vector2D direction;
 	
 	public Ball(Position pos, Vector2D direction) {
@@ -15,22 +21,22 @@ public class Ball {
 	}
 	/**
 	 * Rueckgabe der Ballposition
-	 * @return
+	 * @return Ball
 	 */
 	public Position getPosition() {
 		return pos;
 	}
 	/**
 	 * Rueckgabe des Richtungsvektors 
-	 * @return
+	 * @return pos
 	 */
 	public Vector2D getDirection() {
 		return direction;
 	}
 	/**
-	 * Boolen abfrage ob der Ball das Paddle beruerht  
-	 * @param p
-	 * @return
+	 * Boolean abfrage ob der Ball das Paddle beruerht  
+	 * @param p in abheanigkeit von dem Ball welcher das Paddle beruehrt 
+	 * @return hit
 	 */
 	public boolean hitsPaddle(Paddle p) {
 		boolean hit = false;

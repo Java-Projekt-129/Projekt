@@ -9,7 +9,7 @@ import break_out.controller.JSONReader;
  * @author dmlux
  * @author I. Schumacher
  * modified by 	Jan Erik Riede - 675875
- * modified by 	Lorenzio Dal Molin - 678115
+ * modified by 	Lorenzo Dal Molin - 678115
  * Projektgruppe 	129
  */
 public class Level extends Thread {
@@ -68,14 +68,17 @@ public class Level extends Thread {
 
     
     /**
-     * Getter for the ball
+     * Getter fuer den ball
      * @return ball
      */
     
     public Ball getBall() {
         return ball;
     }
-    
+    /**
+     * Getter fuer das Paddle
+     * @return Paddle
+     */
     public Paddle getPaddle() {
     	return paddle;
     }
@@ -125,13 +128,17 @@ public class Level extends Thread {
     		 * 
     		 */
 	        if (ballWasStarted) {
-	            ball.updatePosition();
+	            //Der Ball wird auf seine Postition ueberpruef/
+	        	ball.updatePosition();
+	            // Der Ball wird auf sein abprallverhalten mit der Wand ueberpruft
 	            ball.reactOnBorder();
+	            //* Der Ball wird auf das Abprallverhalten am Paddle ueberpruft
 	            ball.hitsPaddle(paddle);
+	            // Wenn der Ball das Padlle beruehrt wird der Observer benachrichtigt
 	            game.notifyObservers();
 	            //Das Paddle updatet seine Position
 	            paddle.updatePosition();
-	            // Das Stopverhalten des Paddles
+	            //Das Stopverhalten des Paddles
 	            paddle.reactOnBorder();
 	            
 	                
@@ -161,13 +168,18 @@ public class Level extends Thread {
     			+ levelnr
     			+".json";
     	reader=new JSONReader(fileName);
+    	int[][] intArray = reader.getStones2DArray();
     	
+    	for (int i=0; i < intArray.length; i++) {
+    		for (int j=0; j < intArray[i].length; j++) {
+    			
+    		}
     	}
     	
     		
     }
     
-
+}
     
 
 
