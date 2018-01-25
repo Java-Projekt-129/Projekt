@@ -101,6 +101,7 @@ public class Field extends JPanel {
 		drawPaddle(g2);
 		drawGrid(g2);
 		drawStones(g2);
+		//drawScore(g2);
 		
 		
 		
