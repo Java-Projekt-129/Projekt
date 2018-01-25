@@ -68,6 +68,6 @@ public class Constants {
     /**
      * The ball speed
      */
-    public static final double BALL_SPEED = 0.20;
+    public static final double BALL_SPEED = 1.20;
     
 }

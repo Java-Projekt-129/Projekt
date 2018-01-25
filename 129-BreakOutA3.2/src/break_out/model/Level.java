@@ -48,7 +48,7 @@ public class Level extends Thread {
      */
     private Paddle paddle;
     
-    private Stone[] stones;
+    private Stone[][] stones = new Stone[25][20];
   
         
     /**
@@ -82,7 +82,13 @@ public class Level extends Thread {
     public Paddle getPaddle() {
     	return paddle;
     }
-    
+    /**
+     * Getter fuer die Steine
+     * @return Stones
+     */
+    public Stone[][] getStones(){
+    	return stones;
+    }
        
     /**
      * Setzt ballWasStarted auf true, d.h. der Ball "startet", 
@@ -172,9 +178,10 @@ public class Level extends Thread {
     	
     	for (int i=0; i < intArray.length; i++) {
     		for (int j=0; j < intArray[i].length; j++) {
-    			
+    			stones[i][j] = new Stone(intArray[i][j]);
     		}
     	}
+    	
     	
     		
     }

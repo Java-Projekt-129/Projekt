@@ -149,8 +149,23 @@ public class Field extends JPanel {
 			g2.drawLine(0, squareHeight*i, (int) Constants.SCREEN_WIDTH, squareHeight*i);	
 		}
 	}
+	/**
+	 * Zeichnet die Steine mit der for Schleife und lieﬂt das Muster aus 
+	 * @param g2
+	 */
 	private void drawStones(Graphics2D g2) {
-			
+		
+		int stoneHeight = (int)Constants.SCREEN_HEIGHT/Constants.SQUARES_Y;
+		int stoneWidth = (int) Constants.SCREEN_WIDTH/Constants.SQUARES_X;
+		
+			for (int y = 0; y < view.getGame().getLevel().getStones().length; y++) {
+				for (int x = 0; x < view.getGame().getLevel().getStones()[y].length; x++) {
+					
+					if (view.getGame().getLevel().getStones()[y][x].getType()==1) {
+					g2.fillRect(x*stoneWidth, y*stoneHeight, stoneWidth, stoneHeight);
+					}
+				}
+			}
 		}
 	
 }
