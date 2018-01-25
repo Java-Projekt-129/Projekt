@@ -27,30 +27,37 @@ public class Ball {
 		this.direction = direction;
 		this.direction.rescale();
 	}
+	
 	/**
 	 * Rueckgabe der Ballposition
-	 * @return Ball
+	 * @return pos 
 	 */
 	public Position getPosition() {
 		return pos;
 	}
+	
 	/**
-	 * Rueckgabe des Richtungsvektors 
-	 * @return pos
+	 * Rueckgabe des Richtungsvektors des Balls 
+	 * @return direction
 	 */
 	public Vector2D getDirection() {
 		return direction;
 	}
+	
 	/**
 	 * Boolean abfrage ob der Ball das Paddle beruerht  
 	 * @param p in abheanigkeit von dem Ball welcher das Paddle beruehrt 
 	 * @return hit
 	 */
 	public boolean hitsPaddle(Paddle p) {
+		//boolean abfrage
 		boolean hit = false;
+		//Initialisierung und berrechnung der Ballposition
 		Position ballCenter = new Position(pos.getX()+(Constants.BALL_DIAMETER/2), pos.getY()-(Constants.BALL_DIAMETER/2));
+		//Initialisierung und berrechnung der Paddleposition
 		Position paddleCenter = new Position(p.getPosition().getX()+(Constants.PADDLE_WIDTH/2), p.getPosition().getY()-(Constants.PADDLE_HEIGHT/2));
 		
+		//if 
 		if (ballCenter.getY()+Constants.BALL_DIAMETER/2 > paddleCenter.getY() - Constants.PADDLE_HEIGHT/2
 			&& Math.abs((paddleCenter.getX() - ballCenter.getX())) < Constants.PADDLE_WIDTH/2) {
 			hit = true;
@@ -58,6 +65,7 @@ public class Ball {
 		}
 		return hit;
 	}
+	
 	/**
 	 * Methode zum ermittlen der neuen Ballposition 
 	 */
@@ -65,6 +73,7 @@ public class Ball {
 		pos.setX(pos.getX()+direction.getDx());
         pos.setY(pos.getY()+direction.getDy());  
 	}
+	
 	/**
 	 * Methode zum verhalten an der Wandbruehrung
 	 */
