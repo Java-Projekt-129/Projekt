@@ -48,6 +48,9 @@ public class Level extends Thread {
      */
     private Paddle paddle;
     
+    /**
+     * Instanzierung der Steine
+     */
     private Stone[][] stones = new Stone[25][20];
   
         
@@ -129,12 +132,12 @@ public class Level extends Thread {
     	 */
     	while (true) {
     		/**
-    		 *  wenn ballWasStarted wahr ist (d.h. der Ball soll sich bewegen) werden die Methoden updatePostion
+    		 *  wenn ballWasStarted wahr ist (d.h. der Ball bewegt sich) werden die Methoden updatePostion
     		 *  ,reactOnBoarder hitsPaddle ausgefuert  
     		 * 
     		 */
 	        if (ballWasStarted) {
-	            //Der Ball wird auf seine Postition ueberpruef/
+	            //Der Ball wird auf seine Postition ueberprueft
 	        	ball.updatePosition();
 	            // Der Ball wird auf sein abprallverhalten mit der Wand ueberpruft
 	            ball.reactOnBorder();

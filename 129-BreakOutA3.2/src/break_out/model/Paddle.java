@@ -9,6 +9,7 @@ import break_out.Constants;
 
 public class Paddle {
 	private Position pos;
+	
 	/**
 	 * Methode fuer die Position des Paddles 
 	 * @param pos welcher die Postion des Paddles beschreibt
@@ -20,6 +21,7 @@ public class Paddle {
 	public Position getPosition() {
 		return pos;
 	}
+	
 	/**
 	 * Deklaration der Position des Paddels
 	 */
@@ -39,6 +41,7 @@ public class Paddle {
 			moveRight();
 		}
 	}
+	
 	/**
 	 * Methode fuer die Paddlebewegung 
 	 */
