@@ -8,7 +8,9 @@ package break_out.model;
  * 
  */
 public class Stone {
+	
 	private int type;
+	
 	/**
 	 * Konstruktor fuer die Steine
 	 * @param type
@@ -16,9 +18,10 @@ public class Stone {
 	public Stone (int type) {
 		this.type = type;
 	}
+	
 	/**
 	 * Konsturktor fuer den Typ der Steine 
-	 * @return
+	 * @return type
 	 */
 	public int getType() {
 		return type;

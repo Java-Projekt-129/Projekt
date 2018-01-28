@@ -8,58 +8,86 @@ import break_out.Constants;
  */
 
 public class Paddle {
+	
 	private Position pos;
 	
 	/**
-	 * Methode fuer die Position des Paddles 
+	 * Methode der Position des Paddles 
 	 * @param pos welcher die Postion des Paddles beschreibt
 	 */
 	public Paddle(Position pos) {
 		this.pos = pos;
 	}
 	
+	/**
+	 * Methode zur Rueckgabe der Position des Passels
+	 * @return pos die Position des Paddles
+	 */
 	public Position getPosition() {
 		return pos;
 	}
 	
-	/**
-	 * Deklaration der Position des Paddels
-	 */
+	
 	private int direction;
+	
+	/**
+	 * Methode die die Richtung des Paddles erzeugt
+	 * @param dir beschreibt die richtung des Paddles
+	 */
 	public void setDirection(int dir) {
 		direction = dir;
 	}
+	
+	/**
+	 * Mehtode zur Rueckgabe der Richtung des Paddles
+	 * @return direction
+	 */
 	public int getDirection() {
 		return direction;
 	}
+	
+	/**
+	 * Methode die die Position des Paddles
+	 * nach links oder Rechts aendert und die Position updated
+	 */
 	public void updatePosition() {
+		//if else abfrage für richtung wenn dircetion = -1 bewegung nach links
 		if (direction == -1) {
 			moveLeft();
 		}
 		
+		//else if wenn direction = 1 bewegung nach rechts
 		else if (direction == 1) {
 			moveRight();
 		}
 	}
 	
 	/**
-	 * Methode fuer die Paddlebewegung 
+	 * Methode fuer die Paddlebewegung nach links
 	 */
 	public void moveLeft() {
 		pos.setX(pos.getX()-Constants.DX_MOVEMENT);
 	}
+	
+	/**
+	 * Methode fuer die Paddlebewegung nach rechts
+	 */
 	public void moveRight() {
 		pos.setX(pos.getX()+Constants.DX_MOVEMENT);
 	}
+	
+	/**
+	 * Methode fuer das Verhalten des Paddles bei Wandberuehrung
+	 */
 	public void reactOnBorder() {
 		
-    	// Falls das Paddle die Linke Wand beruert
+    	// Falls das Paddle die Linke Wand beruert wird bewegung nach links gestopt
         if (pos.getX() < 0){
         	direction = 0;
         	moveRight();
         }
         
-        // Falls das Paddle die rechte Wand beruert	
+        // Falls das Paddle die rechte Wand beruert wird bewegung nach rechts gestopt
         if (pos.getX() > Constants.SCREEN_WIDTH-Constants.PADDLE_WIDTH){
         	direction = 0; 
         	moveLeft();
