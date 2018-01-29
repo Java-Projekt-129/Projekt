@@ -14,7 +14,7 @@ import net.miginfocom.swing.MigLayout;
 /**
  * The field represents the board of the game. All components are on the board
  * 
- * @author dmlux, modified by iSchumacher
+ * @author dmlux, modified by iSchumacher, modifed by Jan Erik Riede 675875, Lorenzo Dal Molin 675115 
  * 
  */
 public class Field extends JPanel {
@@ -75,7 +75,6 @@ public class Field extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		//Wichtig fuer Aufgaben
 		double w = Constants.SCREEN_WIDTH;
 		double h = Constants.SCREEN_HEIGHT;
 
@@ -98,12 +97,15 @@ public class Field extends JPanel {
 		
 		// Die Methode zum Ballanimieren starten 
 		drawBall(g2);
+		//Das Paddle zeichnen 
 		drawPaddle(g2);
+		//Das Grid zeichnen 
 		drawGrid(g2);
+		//Die Steine zeichenn 
 		drawStones(g2);
-		//drawScore(g2);
-		
-		
+		//Den Score zeichnen 
+		drawScore(g2);
+				
 		
 		
 		 		
@@ -122,8 +124,8 @@ public class Field extends JPanel {
 	
 	}
 	/**
-	 *@param g2
-	 *Zeichnet das Paddle und greift ueber das bekannte view obejekt auf die Methode zu
+	 *@param g2  fuer das zeichen des Paddles 
+	 *Zeichnet das Paddle und greift ueber das bekannte view objekt auf die Methode zu
 	 */
 	
 	private void drawPaddle(Graphics2D g2) {
@@ -136,7 +138,7 @@ public class Field extends JPanel {
 	}
 	/**
 	 * zeichnet das Raster und speichert die Werte als Array
-	 * @param g2
+	 * @param g2 fuer das zeichen des Rasters
 	 */
 	private void drawGrid(Graphics2D g2) {
 		int squareHeight = (int)Constants.SCREEN_HEIGHT/Constants.SQUARES_Y;
@@ -155,18 +157,31 @@ public class Field extends JPanel {
 	 * @param g2
 	 */
 	private void drawStones(Graphics2D g2) {
-		
-		int stoneHeight = (int)Constants.SCREEN_HEIGHT/Constants.SQUARES_Y;
-		int stoneWidth = (int) Constants.SCREEN_WIDTH/Constants.SQUARES_X;
-		
-			for (int y = 0; y < view.getGame().getLevel().getStones().length; y++) {
-				for (int x = 0; x < view.getGame().getLevel().getStones()[y].length; x++) {
-					
-					if (view.getGame().getLevel().getStones()[y][x].getType()==1) {
-					g2.fillRect(x*stoneWidth, y*stoneHeight, stoneWidth, stoneHeight);
+
+		//durchlauft die Steineliste um die Objekte zu rednern 
+		for (int y = 0; y < view.getGame().getLevel().getStones().size(); y++) {
+			for (int x = 0; x < view.getGame().getLevel().getStones().get(y).size(); x++) {
+				
+				//der Reader stoppt nur wenn der wert 1 erreicht wird nicht null 
+				if (view.getGame().getLevel().getStones().get(y).get(x) != null) {
+					if (view.getGame().getLevel().getStones().get(y).get(x).getType() == 1) {
+						//fuellt den stein in anhengingkeit der postion und des types 
+						g2.fillRect((int)view.getGame().getLevel().getStones().get(y).get(x).getPosition().getX(),
+									(int)view.getGame().getLevel().getStones().get(y).get(x).getPosition().getY(),
+									(int)Constants.STONE_WIDTH,
+									(int)Constants.STONE_HEIGHT);
 					}
 				}
 			}
 		}
+	}
+	/**
+	 * Zeichnet den Spielstandt mit hilfe des View objektes 
+	 * @param g2 Graphics g2 rendert das Objekt 
+	 */
+	private void drawScore(Graphics2D g2) {
+		g2.setColor(new Color(0, 255, 255));
+		g2.drawString("SCORE: " + view.getGame().getLevel().getScore(), (int)Constants.SCREEN_WIDTH/2-25, (int)Constants.SCREEN_HEIGHT/2+5);
+	}
 	
 }

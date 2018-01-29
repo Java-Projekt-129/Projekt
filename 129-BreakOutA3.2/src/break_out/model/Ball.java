@@ -1,4 +1,7 @@
 package break_out.model;
+import java.awt.Rectangle;
+import java.util.List;
+
 import break_out.Constants;
 
 /**
@@ -13,11 +16,19 @@ public class Ball {
 	 * Dekleration der Variable pos vom Typ position
 	 */
 	private Position pos;
+	/**
+	 * Der Index der getroffenen Steine in der Matrix 
+	 */
+	private Position hitStoneIndex;
 	
 	/**
 	 * Dekleration der Variable dircetion vom Typ Vektor2D
 	 */
 	private Vector2D direction;
+	/**
+	 * Die Hitbox des Balles 
+	 */
+	private Rectangle hitBox;
 	
 	/**
 	 * Kostruktoren für die Position und Richtung des Balls
@@ -29,6 +40,14 @@ public class Ball {
 		this.pos = pos;
 		this.direction = direction;
 		this.direction.rescale();
+		// Erzeugt einen neuen Winkel fuer den Ball 
+		this.hitBox = new Rectangle(
+				(int)pos.getX(),
+				(int)pos.getY(),
+				(int)Constants.BALL_DIAMETER,
+				(int)Constants.BALL_DIAMETER);
+		
+		this.hitStoneIndex = new Position(0,0);
 	}
 	
 	/**
@@ -38,6 +57,13 @@ public class Ball {
 	public Position getPosition() {
 		return pos;
 	}
+	/**
+	 * Getter fuer die getroffenen Steine in der Matrix
+	 * @return hitStonePos die Position der getroffenen Steine 
+	 */
+	public Position getHitStoneIndex() {
+		return hitStoneIndex;
+	}
 	
 	/**
 	 * Rueckgabe des Richtungsvektors des Balls 
@@ -46,6 +72,14 @@ public class Ball {
 	public Vector2D getDirection() {
 		return direction;
 	}
+	/**
+	 * Getter fuer die Hitbox des Balles 
+	 * @return hitbox Die Hitbox des Balles 
+	 */
+	public Rectangle getHitBox() {
+		return hitBox;
+	}
+	
 	
 	/**
 	 * Boolean abfrage ob der Ball das Paddle beruerht  
@@ -70,7 +104,26 @@ public class Ball {
 		}
 		return hit;
 	}
-	
+	/**
+	 * Boolean abfrage ob der Ball die Steine beruhert 
+	 * @param stones Parameter der Steine
+	 * @return hit ob der Ball getroffen hat 
+	 */
+	public boolean hitsStone(List<List<Stone>> stones) {
+		boolean hit = false;
+		for (int y = 0; y < stones.size(); y++) {
+			for (int x = 0; x < stones.get(y).size(); x++) {
+				if(stones.get(y).get(x) != null) {
+					if(hitBox.intersects(stones.get(y).get(x).getHitBox())) {
+						hit = true;
+						hitStoneIndex.setX(x);
+						hitStoneIndex.setY(y);
+						}
+					}
+				}
+			}
+		return hit;
+	}
 	/**
 	 * Methode zum ermittlen der neuen Ballposition 
 	 */
@@ -118,11 +171,32 @@ public class Ball {
 	 * @param paddle beschreibt die positon des Paddles 
 	 */
 	public void reflectOnPaddle(Paddle paddle) {
-		Position ballCenter = new Position(pos.getX()+(Constants.BALL_DIAMETER/2), pos.getY()-(Constants.BALL_DIAMETER/2));
-		Position paddleCenter = new Position(paddle.getPosition().getX()+(Constants.PADDLE_WIDTH/2), paddle.getPosition().getY()-(Constants.PADDLE_HEIGHT/2) + 3*Constants.PADDLE_HEIGHT);
+		Position ballCenter = new Position(pos.getX()+(Constants.BALL_DIAMETER/2), pos.getY()+(Constants.BALL_DIAMETER/2));
+		Position paddleCenter = new Position(paddle.getPosition().getX()+(Constants.PADDLE_WIDTH/2), paddle.getPosition().getY()+(Constants.PADDLE_HEIGHT/2) + 3*Constants.PADDLE_HEIGHT);
 		direction = new Vector2D(paddleCenter, ballCenter);
 		direction.rescale();
 	}
-	
+	/**
+	 * Void welches Abfragt wie sich der Ball bei beruerung mit den Steinen verhalten soll 
+	 * @param hitStone Der Stein an dem der Ball abprallt 
+	 */
+	public void reactOnStone(Stone hitStone) {
+		// falls der Ball die linke Seite trifft 
+		if (pos.getX() + Constants.BALL_DIAMETER/2 < hitStone.getPosition().getX()) {
+			direction.setDx(-direction.getDx());
+		}
+		// falls der Ball die rechte Seite trifft 
+		else if (pos.getX() + Constants.BALL_DIAMETER/2 > hitStone.getPosition().getX()+Constants.STONE_WIDTH) {
+			direction.setDx(-direction.getDx());
+		}
+		// falls der Ball die obere Seite trifft 
+		else if (pos.getY() + Constants.BALL_DIAMETER/2 < hitStone.getPosition().getY()) {
+			direction.setDy(-direction.getDy());
+		}
+		// falls der Ball die untere Seite trifft 
+		else if (pos.getY() + Constants.BALL_DIAMETER/2 > hitStone.getPosition().getY()+Constants.STONE_HEIGHT) {
+			direction.setDy(-direction.getDy());
+		}
+	}
 }
 	

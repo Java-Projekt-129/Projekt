@@ -5,7 +5,7 @@ import java.awt.Color;
 /**
  * A class that contains all constant values to configure the game
  * 
- * @author dmlux
+ * @author dmlux,modified by I. Schumacher. modified by Jan Erik Riede 675875, modified by Lorenzo Dal Molin 675115 
  * 
  */
 public class Constants {
@@ -69,5 +69,24 @@ public class Constants {
      * The ball speed
      */
     public static final double BALL_SPEED = 1.20;
+    /**
+     * Die X Postion der Steine berechnet im Mittelpunkt 
+     */
+    public static final int STONE_OFFSET_X = 2;
+    
+    /**
+     * Die Y Psotion der Steine berechnet im Mittelpunkt 
+     */
+    public static final int STONE_OFFSET_Y = 2;
+    
+    /**
+     * Die breite der Steine
+     */
+    public static final double STONE_WIDTH = Constants.SCREEN_WIDTH/Constants.SQUARES_X-Constants.STONE_OFFSET_X*2;
+    
+    /**
+     * Die hoehe der Steine 
+     */
+    public static final double STONE_HEIGHT = Constants.SCREEN_HEIGHT/Constants.SQUARES_Y-Constants.STONE_OFFSET_Y*2;
     
 }

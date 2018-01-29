@@ -1,4 +1,9 @@
 package break_out.model;
+
+import java.awt.Rectangle;
+
+import break_out.Constants;
+
 /**
  * Diese Klasse representiert die Steine im Spiel
  * @author Jan Erik Riede 675875
@@ -7,24 +12,76 @@ package break_out.model;
  */
 
 public class Stone {
-	
-	private int type;
-	
 	/**
-	 * konsturktor fuer die Steine
-	 * @param type Der Typ der Steine
+	 *  Der Typ des Steins 
 	 */
-	public Stone (int type) {
+	private long type;
+	/**
+	 * Die Postion der Steine 
+	 */
+	private Position pos;
+	/**
+	 * Die Hitbox der Steine 
+	 */
+	private Rectangle hitBox;
+	/**
+	 * Der Konstrukot benötigt ein Long um die Positon und Typ der Steine zu speichern
+	 * @param type Der Typ der Steine
+	 * @param pos Die Position der Steine 
+	 */
+	public Stone(long type, Position pos) {
+		this.type = type;
+		this.pos = pos;
+		
+		//erstellt eine neue Hitbox fuer die Steine 
+		this.hitBox = new Rectangle(
+				(int)pos.getX(), 
+				(int)pos.getY(),
+				(int)Constants.STONE_WIDTH,
+				(int)Constants.STONE_HEIGHT);
+				
+	}
+	/**
+	 * Setter fuer den typ der Steine
+	 * @param type der neue Steintyp
+	 */
+	public void setType(long type) {
 		this.type = type;
 	}
 	
 	/**
-	 * Deklaration fuer den Typ der Steine 
-	 * @return type der Steine 
+	 * Setter fuer die Positon der Steine
+	 * @param pos die neue Steinposition
 	 */
-	public int getType() {
+	public void setPosition(Position pos) {
+		this.pos = pos;
+	}
+
+	
+	/**
+	 * getter fuer den Typ der Steine 
+	 * @return type der typ der Steine 
+	 */
+	public long getType() {
 		return type;
 	}
+	
+	/**
+	 * Getter fuer die Postion der Steine
+	 * @return pos die Positon der Steine 
+	 */
+	public Position getPosition() {
+		return pos;
+	}
+	
+	/**
+	 * Getter for the stones hitBox
+	 * @return hitBox The stones hitBox
+	 */
+	public Rectangle getHitBox() {
+		return hitBox;
+	}
+	
 	
 	
 }

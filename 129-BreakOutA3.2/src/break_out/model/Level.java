@@ -1,5 +1,8 @@
 package break_out.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import break_out.Constants;
 import break_out.controller.JSONReader;
 
@@ -47,12 +50,11 @@ public class Level extends Thread {
      * Instanzierung des Paddles
      */
     private Paddle paddle;
-    
     /**
-     * Instanzierung der Steine mit begrentztem Array
-     * sind in einem rechteck von 25 * 20 feldern angeornet
+     * Erstellt eine neue Steineliste 
      */
-    private Stone[][] stones = new Stone[25][20];
+  
+    private List<List<Stone>> stones = new ArrayList<List<Stone>>();
   
         
     /**
@@ -66,7 +68,9 @@ public class Level extends Thread {
     	this.levelnr = levelnr ;
     	this.score = score;
         loadLevelData(levelnr);
+        // Deklariern des Ball Objektes 
         ball = new Ball(new Position((Constants.SCREEN_WIDTH-(Constants.BALL_DIAMETER))/2, Constants.SCREEN_HEIGHT-(Constants.BALL_DIAMETER)-Constants.PADDLE_HEIGHT), new Vector2D(1.0,1.0));
+        //Deklariern des Paddle Objektes 
         paddle = new Paddle(new Position(Constants.SCREEN_WIDTH/2-Constants.PADDLE_WIDTH/2, Constants.SCREEN_HEIGHT-(Constants.PADDLE_HEIGHT)));
     }
 
@@ -90,8 +94,15 @@ public class Level extends Thread {
      * Getter fuer die Steine
      * @return Stones
      */
-    public Stone[][] getStones(){
+    public List<List<Stone>> getStones(){
     	return stones;
+    }
+    /**
+     * Getter fuer den Score
+     * @return Score der erreichte Score 
+     */
+    public int getScore() {
+    	return score;
     }
        
     /**
@@ -116,6 +127,16 @@ public class Level extends Thread {
      */
     public boolean ballWasStarted() {
         return ballWasStarted;
+    }
+    /**
+     * Diese Methode updatet den Gamescore und die Steinmatrix 
+     * @param hitStoneIndex Die position der getroffenen Steine in der Matrix 
+     */
+    public void updateStonesAndScore(Position hitStoneIndex) {
+    	if(stones.get((int)hitStoneIndex.getY()).get((int)hitStoneIndex.getX())!= null){
+    	stones.get((int)hitStoneIndex.getY()).set((int)hitStoneIndex.getX(), null);
+    	score++;
+    	}
     }
 
 
@@ -150,7 +171,18 @@ public class Level extends Thread {
 	            paddle.updatePosition();
 	            //Das Stopverhalten des Paddles
 	            paddle.reactOnBorder();
-	            
+	            //Abfrage ob der Ball das Paddle trifft 
+	            if(ball.hitsPaddle(paddle)) {
+	            	ball.reflectOnPaddle(paddle);
+	            }
+	            //Abfrage ob der Ball die Steine trifft 
+	            if(ball.hitsStone(stones)) {
+	            	ball.reactOnStone(stones.get((int)ball.getHitStoneIndex().getY()).get((int)ball.getHitStoneIndex().getX())); 
+	            	updateStonesAndScore(ball.getHitStoneIndex());
+	            }
+	            //Paddle wird aufgefordert seine Postion und auf Wandberuerhung abzufragen 
+	            paddle.updatePosition();
+	            paddle.reactOnBorder();
 	                
 	        }
 	        // Der Thread pausiert kurz
@@ -172,25 +204,26 @@ public class Level extends Thread {
     */
     
     private void loadLevelData(int levelnr) {
-    	JSONReader reader ;
-    	// laden der Datei als String 
-    	String fileName="res/Level"
-    			+ levelnr
-    			+".json";
-    	// erzeugung von neuem Json Reader
-    	reader=new JSONReader(fileName);
-    	//Deklaration des Arrays in dem die Steine angeorndet sind 
-    	int[][] intArray = reader.getStones2DArray();   	
-    	//Grenzen vom  Array gesetzt 
-    	for (int i=0; i < intArray.length; i++) { 
-    		for (int j=0; j < intArray[i].length; j++) {
-    			// erzeugen des Arrays 
-    			stones[i][j] = new Stone(intArray[i][j]);
+    	String path = "res/Level" + levelnr + ".json";
+    	JSONReader reader = new JSONReader(path);
+    	
+    	//Erstellt ein neues Stein-Objekt nach der vorgabe des Arrays aus Json Reader . 
+    	for(int y = 0; y < reader.getStonesListOfLists().size(); y++) {
+    		stones.add(y, new ArrayList<Stone>());
+    		for (int x = 0; x < reader.getStonesListOfLists().get(y).size(); x++) {
+    			
+    			if (reader.getStonesListOfLists().get(y).get(x)==1) {
+    				stones.get(y).add(x, new Stone(reader.getStonesListOfLists().get(y).get(x),
+    						new Position(x*Constants.SCREEN_WIDTH/Constants.SQUARES_X+Constants.STONE_OFFSET_X,
+    									 y*(int)Constants.SCREEN_HEIGHT/Constants.SQUARES_Y+Constants.STONE_OFFSET_Y)));
+    			}
+    			
+    			if (reader.getStonesListOfLists().get(y).get(x)==0) {
+    				stones.get(y).add(x, null);
+    			}
     		}
     	}
     	
-    	
-    		
     }
     
 }
