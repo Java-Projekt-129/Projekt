@@ -146,23 +146,26 @@ public class Ball {
 		// Falls der Ball gegen die Rechte Wand kommt prallt er nach links
         if (pos.getX() > Constants.SCREEN_WIDTH-Constants.BALL_DIAMETER){
         	direction.setDx(-direction.getDx());
-        		
-        
+        	pos.setX(Constants.SCREEN_WIDTH-Constants.BALL_DIAMETER);
+                
         }
     
         // Falls der Ball gegen die linke Grenze kommt prallt er nach rechts ab
         if (pos.getX() < Constants.BALL_DIAMETER-Constants.BALL_DIAMETER){
         	direction.setDx(-direction.getDx());
+        	pos.setX(Constants.BALL_DIAMETER-Constants.BALL_DIAMETER);
         }
       
        // Falls der Ball gegen die untere Grenze kommt prallt er nach oben ab
         if (pos.getY() > Constants.SCREEN_HEIGHT-Constants.BALL_DIAMETER){
         	direction.setDy(-direction.getDy());
+        	pos.setY(Constants.SCREEN_HEIGHT-Constants.BALL_DIAMETER);
         }
       
         // Falls der Ball gegen die obere Grenze kommt prallt er nach unten ab
         if (pos.getY() < Constants.BALL_DIAMETER-Constants.BALL_DIAMETER){
         	direction.setDy(-direction.getDy());
+        	pos.setY(Constants.BALL_DIAMETER-Constants.BALL_DIAMETER);
         }
         
 		
