@@ -33,8 +33,10 @@ public class Ball {
 	/**
 	 * Kostruktoren für die Position und Richtung des Balls
 	 * sowie normierung seines Richtungsvektors
+	 * Kontruktor fuer die Hitbox des Balles 
 	 * @param pos Postion des Balles  
 	 * @param direction Richtung des Balles 
+	 * @param hitStoneIndex Beschreibt ob der Ball getroffen hat 
 	 */
 	public Ball(Position pos, Vector2D direction) {
 		this.pos = pos;
@@ -59,7 +61,7 @@ public class Ball {
 	}
 	/**
 	 * Getter fuer die getroffenen Steine in der Matrix
-	 * @return hitStonePos die Position der getroffenen Steine 
+	 * @return hitStoneIndex ob der Ball getroffen wurde 
 	 */
 	public Position getHitStoneIndex() {
 		return hitStoneIndex;
@@ -67,7 +69,7 @@ public class Ball {
 	
 	/**
 	 * Rueckgabe des Richtungsvektors des Balls 
-	 * @return direction
+	 * @return direction fuer den Richtungsvektor des Balles 
 	 */
 	public Vector2D getDirection() {
 		return direction;
@@ -106,7 +108,7 @@ public class Ball {
 	}
 	/**
 	 * Boolean abfrage ob der Ball die Steine beruhert 
-	 * @param stones Parameter der Steine
+	 * @param stones Variable  der Steine
 	 * @return hit ob der Ball getroffen hat 
 	 */
 	public boolean hitsStone(List<List<Stone>> stones) {
@@ -125,7 +127,7 @@ public class Ball {
 		return hit;
 	}
 	/**
-	 * Methode zum ermittlen der neuen Ballposition 
+	 * Methode zum ermittlen der neuen Ballposition so wie der Hitbox
 	 */
 	public void updatePosition() {
 		pos.setX(pos.getX()+direction.getDx());
@@ -168,7 +170,6 @@ public class Ball {
 	 * Abfrage ob der Ball das Paddle beruehrt.
 	 * dabei wird ein neuer Vektor erzeugt in abheaningkeit von den Konstanten des Paddles 
 	 * zusaetzlich wird bei dem Abprall verhalten der Vektor welcher vom Paddle ausgeht skaliert
-	 * 
 	 * @param paddle beschreibt die positon des Paddles 
 	 */
 	public void reflectOnPaddle(Paddle paddle) {

@@ -77,7 +77,7 @@ public class Level extends Thread {
     
     /**
      * Getter fuer den ball
-     * @return ball
+     * @return ball rueckgabe des Balles 
      */
     
     public Ball getBall() {
@@ -85,14 +85,14 @@ public class Level extends Thread {
     }
     /**
      * Getter fuer das Paddle
-     * @return Paddle
+     * @return Paddle rueckgabe des Paddles 
      */
     public Paddle getPaddle() {
     	return paddle;
     }
     /**
      * Getter fuer die Steine
-     * @return Stones
+     * @return Stones ruckgabe von dem Stein 
      */
     public List<List<Stone>> getStones(){
     	return stones;
@@ -130,7 +130,7 @@ public class Level extends Thread {
     }
     /**
      * Diese Methode updatet den Gamescore und die Steinmatrix 
-     * @param hitStoneIndex Die position der getroffenen Steine in der Matrix 
+     * @param hitStoneIndex Die der getroffenen Steine in der Matrix 
      */
     public void updateStonesAndScore(Position hitStoneIndex) {
     	if(stones.get((int)hitStoneIndex.getY()).get((int)hitStoneIndex.getX())!= null){
@@ -155,27 +155,43 @@ public class Level extends Thread {
     	while (true) {
     		/**
     		 *  wenn ballWasStarted wahr ist (d.h. der Ball bewegt sich) werden die Methoden updatePostion
-    		 *  ,reactOnBoarder hitsPaddle ausgefuert  
+    		 *  ,reactOnBoarder hitsPaddle, hitStones aushefuhrt 
     		 * 
     		 */
 	        if (ballWasStarted) {
-	            //Der Ball wird auf seine Postition ueberprueft
+	            /**
+	             *Der Ball wird auf seine Postition ueberprueft
+	             */
 	        	ball.updatePosition();
-	            // Der Ball wird auf sein abprallverhalten mit der Wand ueberpruft
+	            /**
+	             *Der Ball wird auf sein abprallverhalten mit der Wand ueberpruft
+	             */
 	            ball.reactOnBorder();
-	            //* Der Ball wird auf das Abprallverhalten am Paddle ueberpruft
+	            /**
+	             *Der Ball wird auf das Abprallverhalten am Paddle ueberpruft
+	             */
 	            ball.hitsPaddle(paddle);
-	            // Wenn der Ball das Padlle beruehrt wird der Observer benachrichtigt
+	            /**
+	             *Wenn der Ball das Padlle beruehrt wird der Observer benachrichtigt
+	             */
 	            game.notifyObservers();
-	            //Das Paddle updatet seine Position
+	            /**
+	             * Das Paddle updatet seine Position
+	             */
 	            paddle.updatePosition();
-	            //Das Stopverhalten des Paddles
+	            /**
+	             * Das Stopverhalten des Paddles
+	             */
 	            paddle.reactOnBorder();
-	            //Abfrage ob der Ball das Paddle trifft 
+	            /**
+	             * Abfrage ob der Ball das Paddle trifft 
+	             */
 	            if(ball.hitsPaddle(paddle)) {
 	            	ball.reflectOnPaddle(paddle);
 	            }
-	            //Abfrage ob der Ball die Steine trifft 
+	            /**
+	             * Abfrage ob der Ball die Steine trifft 
+	             */
 	            if(ball.hitsStone(stones)) {
 	            	ball.reactOnStone(stones.get((int)ball.getHitStoneIndex().getY()).get((int)ball.getHitStoneIndex().getX())); 
 	            	updateStonesAndScore(ball.getHitStoneIndex());
@@ -202,7 +218,10 @@ public class Level extends Thread {
     * @param levelnr Die Nummer X fuer die LevelX.json Datei
     * @param levelnr die Nummer des aktuellen Levels
     */
-    
+    /**
+     * Laedt die Datei JSOnreader und specihert ihn als String 
+     * @param levelnr das erreichte Level 
+     */
     private void loadLevelData(int levelnr) {
     	String path = "res/Level" + levelnr + ".json";
     	JSONReader reader = new JSONReader(path);
@@ -212,15 +231,18 @@ public class Level extends Thread {
     	 * Diese for schleife sorgt fuer das zeichenen der Steine in abhangingkeit von den Konstanten
     	 */
     	for(int y = 0; y < reader.getStonesListOfLists().size(); y++) {
+    		//hinzufuegen der Steine zum der Array Liste 
     		stones.add(y, new ArrayList<Stone>());
     		for (int x = 0; x < reader.getStonesListOfLists().get(y).size(); x++) {
-    			
+    			//Falls der Reader den Wert 1 erreicht stoppt die Schleife 
     			if (reader.getStonesListOfLists().get(y).get(x)==1) {
+    				//Die Steine werden ins Array geladen 
     				stones.get(y).add(x, new Stone(reader.getStonesListOfLists().get(y).get(x),
+    						//Die Defentiton der neuen Ballposition 
     						new Position(x*Constants.SCREEN_WIDTH/Constants.SQUARES_X+Constants.STONE_OFFSET_X,
     									 y*(int)Constants.SCREEN_HEIGHT/Constants.SQUARES_Y+Constants.STONE_OFFSET_Y)));
     			}
-    			
+    			//Falls der Reader keine neuen Steine laden kann 
     			if (reader.getStonesListOfLists().get(y).get(x)==0) {
     				stones.get(y).add(x, null);
     			}

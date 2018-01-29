@@ -177,7 +177,7 @@ public class Field extends JPanel {
 	}
 	/**
 	 * Zeichnet den Spielstandt mit hilfe des View objektes 
-	 * @param g2 Graphics g2 rendert das Objekt 
+	 * @param g2 Graphics g2 rendert den Score  
 	 */
 	private void drawScore(Graphics2D g2) {
 		g2.setColor(new Color(0, 255, 255));

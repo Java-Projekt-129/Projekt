@@ -55,7 +55,7 @@ public class Vector2D {
 	}
 	
 	/**
-	 * setter Methode für dx
+	 * setter fuer dx
 	 * @param dx der x Wert auf dem Spielfeld 
 	 */
 	public void setDx(double dx) {
@@ -63,7 +63,7 @@ public class Vector2D {
 	}
 	
 	/**
-	 * 
+	 * Setter fuer dy  
 	 * @param dy der y Wert auf dem Spielfeld 
 	 */
 	public void setDy(double dy) {
