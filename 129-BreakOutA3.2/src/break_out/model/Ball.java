@@ -145,7 +145,9 @@ public class Ball {
 		
 		// Falls der Ball gegen die Rechte Wand kommt prallt er nach links
         if (pos.getX() > Constants.SCREEN_WIDTH-Constants.BALL_DIAMETER){
-        	direction.setDx(-direction.getDx()); 
+        	direction.setDx(-direction.getDx());
+        		
+        
         }
     
         // Falls der Ball gegen die linke Grenze kommt prallt er nach rechts ab

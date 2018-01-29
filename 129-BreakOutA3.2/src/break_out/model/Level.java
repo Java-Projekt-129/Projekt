@@ -163,29 +163,17 @@ public class Level extends Thread {
 	             *Der Ball wird auf seine Postition ueberprueft
 	             */
 	        	ball.updatePosition();
-	            /**
-	             *Der Ball wird auf sein abprallverhalten mit der Wand ueberpruft
-	             */
+	            // Der Ball wird auf sein abprallverhalten mit der Wand ueberpruft
 	            ball.reactOnBorder();
-	            /**
-	             *Der Ball wird auf das Abprallverhalten am Paddle ueberpruft
-	             */
+	            // Der Ball wird auf das Abprallverhalten am Paddle ueberpruft
 	            ball.hitsPaddle(paddle);
-	            /**
-	             *Wenn der Ball das Padlle beruehrt wird der Observer benachrichtigt
-	             */
+	            // Wenn der Ball das Padlle beruehrt wird der Observer benachrichtigt
 	            game.notifyObservers();
-	            /**
-	             * Das Paddle updatet seine Position
-	             */
+	            // Das Paddle updatet seine Position             
 	            paddle.updatePosition();
-	            /**
-	             * Das Stopverhalten des Paddles
-	             */
+	            //Das Stopverhalten des Paddles
 	            paddle.reactOnBorder();
-	            /**
-	             * Abfrage ob der Ball das Paddle trifft 
-	             */
+	            //Abfrage ob der Ball das Paddle trifft 
 	            if(ball.hitsPaddle(paddle)) {
 	            	ball.reflectOnPaddle(paddle);
 	            }
