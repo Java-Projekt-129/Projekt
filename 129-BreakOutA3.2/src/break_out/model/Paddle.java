@@ -40,7 +40,7 @@ public class Paddle {
 	}
 	
 	/**
-	 * Mehtode zur Rueckgabe der Richtung des Paddles
+	 * Methode zur Rueckgabe der Richtung des Paddles
 	 * @return direction die richtung des Paddles 
 	 */
 	public int getDirection() {

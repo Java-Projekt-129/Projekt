@@ -48,13 +48,13 @@ public class Ball {
 				(int)pos.getY(),
 				(int)Constants.BALL_DIAMETER,
 				(int)Constants.BALL_DIAMETER);
-		
+		//Erzeugt die neue Steinposition
 		this.hitStoneIndex = new Position(0,0);
 	}
 	
 	/**
 	 * Rueckgabe der Ballposition
-	 * @return pos 
+	 * @return pos der wert der Ball Position 
 	 */
 	public Position getPosition() {
 		return pos;
@@ -188,19 +188,19 @@ public class Ball {
 	 * @param hitStone Der Stein an dem der Ball abprallt 
 	 */
 	public void reactOnStone(Stone hitStone) {
-		// falls der Ball die linke Seite trifft 
+		// falls der Ball die linke Seite der Steine trifft 
 		if (pos.getX() + Constants.BALL_DIAMETER/2 < hitStone.getPosition().getX()) {
 			direction.setDx(-direction.getDx());
 		}
-		// falls der Ball die rechte Seite trifft 
+		// falls der Ball die rechte Seite der Steine trifft 
 		else if (pos.getX() + Constants.BALL_DIAMETER/2 > hitStone.getPosition().getX()+Constants.STONE_WIDTH) {
 			direction.setDx(-direction.getDx());
 		}
-		// falls der Ball die obere Seite trifft 
+		// falls der Ball die obere Seite der Steine trifft 
 		else if (pos.getY() + Constants.BALL_DIAMETER/2 < hitStone.getPosition().getY()) {
 			direction.setDy(-direction.getDy());
 		}
-		// falls der Ball die untere Seite trifft 
+		// falls der Ball die untere Seite der Steine trifft 
 		else if (pos.getY() + Constants.BALL_DIAMETER/2 > hitStone.getPosition().getY()+Constants.STONE_HEIGHT) {
 			direction.setDy(-direction.getDy());
 		}
