@@ -129,7 +129,8 @@ public class Ball {
 	 */
 	public void updatePosition() {
 		pos.setX(pos.getX()+direction.getDx());
-        pos.setY(pos.getY()+direction.getDy());  
+        pos.setY(pos.getY()+direction.getDy()); 
+        hitBox.setLocation((int)pos.getX(), (int)pos.getY());
 	}
 	
 	/**

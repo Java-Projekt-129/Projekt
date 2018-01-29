@@ -124,8 +124,8 @@ public class Field extends JPanel {
 	
 	}
 	/**
-	 *@param g2  fuer das zeichen des Paddles 
 	 *Zeichnet das Paddle und greift ueber das bekannte view objekt auf die Methode zu
+	 *@param g2  fuer das zeichen des Paddles 
 	 */
 	
 	private void drawPaddle(Graphics2D g2) {
@@ -154,7 +154,7 @@ public class Field extends JPanel {
 	}
 	/**
 	 * Zeichnet die Steine mit der for Schleife und lieﬂt das Muster aus 
-	 * @param g2
+	 * @param g2 fuer das zeichnen der Steine 
 	 */
 	private void drawStones(Graphics2D g2) {
 

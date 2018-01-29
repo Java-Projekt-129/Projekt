@@ -208,6 +208,9 @@ public class Level extends Thread {
     	JSONReader reader = new JSONReader(path);
     	
     	//Erstellt ein neues Stein-Objekt nach der vorgabe des Arrays aus Json Reader . 
+    	/**
+    	 * Diese for schleife sorgt fuer das zeichenen der Steine in abhangingkeit von den Konstanten
+    	 */
     	for(int y = 0; y < reader.getStonesListOfLists().size(); y++) {
     		stones.add(y, new ArrayList<Stone>());
     		for (int x = 0; x < reader.getStonesListOfLists().get(y).size(); x++) {
