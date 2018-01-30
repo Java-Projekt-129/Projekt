@@ -64,12 +64,22 @@ public class Level extends Thread {
      * @param score Der bisher erreichte Scorewert
      */
     public Level(Game game, int levelnr, int score) {
+    	
+    	//Instanziiren des Game Objekts
     	this.game = game;
+    	
+    	//Nummer des zu instanziirenden levels
     	this.levelnr = levelnr ;
+    	
+    	//der bisher erreichte scorewert
     	this.score = score;
-        loadLevelData(levelnr);
-        // Deklariern des Ball Objektes 
+        
+    	//laedt die Datei JSOnreader und speichert ihn als String
+    	loadLevelData(levelnr);
+        
+    	// Deklariern des Ball Objektes 
         ball = new Ball(new Position((Constants.SCREEN_WIDTH-(Constants.BALL_DIAMETER))/2, Constants.SCREEN_HEIGHT-(Constants.BALL_DIAMETER)-Constants.PADDLE_HEIGHT), new Vector2D(1.0,1.0));
+        
         //Deklariern des Paddle Objektes 
         paddle = new Paddle(new Position(Constants.SCREEN_WIDTH/2-Constants.PADDLE_WIDTH/2, Constants.SCREEN_HEIGHT-(Constants.PADDLE_HEIGHT)));
     }
@@ -144,6 +154,7 @@ public class Level extends Thread {
      * Diese Methode enthaelt die Threadlogik, d.h. hier wird festgelegt, was im Thread ablaeuft.
      */
     public void run() {
+    	
     	/**
     	 * game informiert den observer dass das Spiel gestartet wird
     	 */
@@ -153,43 +164,47 @@ public class Level extends Thread {
     	 *  Endlosschleife fuer den Ablauf
     	 */
     	while (true) {
-    		/**
-    		 *  wenn ballWasStarted wahr ist (d.h. der Ball bewegt sich) werden die Methoden updatePostion
-    		 *  ,reactOnBoarder hitsPaddle, hitStones aushefuhrt 
-    		 * 
-    		 */
+    		
+    		//wenn ballWasStarted wahr ist wird Methoden updatePostion reactOnBoarder hitsPaddle, hitStones aushefuhrt 
 	        if (ballWasStarted) {
-	            /**
-	             *Der Ball wird auf seine Postition ueberprueft
-	             */
+	        	
+	        	//Der Ball wird auf seine Postition ueberprueft
 	        	ball.updatePosition();
-	            // Der Ball wird auf sein abprallverhalten mit der Wand ueberpruft
+	            
+	        	// Der Ball wird auf sein abprallverhalten mit der Wand ueberpruft
 	            ball.reactOnBorder();
+	            
 	            // Der Ball wird auf das Abprallverhalten am Paddle ueberpruft
 	            ball.hitsPaddle(paddle);
+	            
 	            // Wenn der Ball das Padlle beruehrt wird der Observer benachrichtigt
 	            game.notifyObservers();
+	            
 	            // Das Paddle updatet seine Position             
 	            paddle.updatePosition();
+	            
 	            //Das Stopverhalten des Paddles
 	            paddle.reactOnBorder();
+	            
 	            //Abfrage ob der Ball das Paddle trifft 
 	            if(ball.hitsPaddle(paddle)) {
 	            	ball.reflectOnPaddle(paddle);
 	            }
-	            /**
-	             * Abfrage ob der Ball die Steine trifft 
-	             */
+	            
+	            //Abfrage ob der Ball die Steine trifft 
 	            if(ball.hitsStone(stones)) {
 	            	ball.reactOnStone(stones.get((int)ball.getHitStoneIndex().getY()).get((int)ball.getHitStoneIndex().getX())); 
 	            	updateStonesAndScore(ball.getHitStoneIndex());
 	            }
-	            //Paddle wird aufgefordert seine Postion und auf Wandberuerhung abzufragen 
+	            
+	            //Paddle wird aufgefordert seine Postion abzufragen 
 	            paddle.updatePosition();
+	            //Paddle wird aufgefordert auf Wandberuerhung
 	            paddle.reactOnBorder();
 	                
 	        }
-	        // Der Thread pausiert kurz
+	        
+	        //Der Thread pausiert kurz
 	        try {
 	            Thread.sleep(4);
 	        } catch (InterruptedException e) {

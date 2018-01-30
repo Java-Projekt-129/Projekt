@@ -1,13 +1,13 @@
 
 package break_out.model;
 import break_out.Constants;
+
 /**
  * Diese Klasse beschreibt das verhalten des Paddles 
  * @author Jan Erik Riede 675875 
  * @author Lorenzo Dal Molin 678115 
  * Abgabegruppe 129
  */
-
 public class Paddle {
 	
 	private Position pos;
