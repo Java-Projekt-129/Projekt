@@ -31,12 +31,12 @@ public class Ball {
 	private Rectangle hitBox;
 	
 	/**
-	 * Kostruktoren für die Position und Richtung des Balls
+	 * Kostruktoren fuer die Position und Richtung des Balls
 	 * sowie normierung seines Richtungsvektors
 	 * Kontruktor fuer die Hitbox des Balles 
 	 * @param pos Postion des Balles  
 	 * @param direction Richtung des Balles 
-	 * @param hitStoneIndex Beschreibt ob der Ball getroffen hat 
+	 * 
 	 */
 	public Ball(Position pos, Vector2D direction) {
 		this.pos = pos;
@@ -89,7 +89,7 @@ public class Ball {
 	 * @return hit rueckgabe ob der Ball das Padlle getroffen hat oder nicht 
 	 */
 	public boolean hitsPaddle(Paddle p) {
-		//boolean abfrage für paddle berührung
+		//boolean abfrage fuer paddle beruehrung
 		boolean hit = false;
 		//Initialisierung und berrechnung der Ballposition
 		Position ballCenter = new Position(pos.getX()+(Constants.BALL_DIAMETER/2), pos.getY()-(Constants.BALL_DIAMETER/2));
@@ -146,6 +146,7 @@ public class Ball {
 		// Falls der Ball gegen die Rechte Wand kommt prallt er nach links
         if (pos.getX() > Constants.SCREEN_WIDTH-Constants.BALL_DIAMETER){
         	direction.setDx(-direction.getDx());
+        	//Ball auf Wandberuehung zurucksetzen
         	pos.setX(Constants.SCREEN_WIDTH-Constants.BALL_DIAMETER);
                 
         }
@@ -153,18 +154,21 @@ public class Ball {
         // Falls der Ball gegen die linke Grenze kommt prallt er nach rechts ab
         if (pos.getX() < Constants.BALL_DIAMETER-Constants.BALL_DIAMETER){
         	direction.setDx(-direction.getDx());
+        	//Ball auf Wandberuehung zuruecksetzten 
         	pos.setX(Constants.BALL_DIAMETER-Constants.BALL_DIAMETER);
         }
       
        // Falls der Ball gegen die untere Grenze kommt prallt er nach oben ab
         if (pos.getY() > Constants.SCREEN_HEIGHT-Constants.BALL_DIAMETER){
         	direction.setDy(-direction.getDy());
+        	//Ball auf Wandberuehung zurucksetzen
         	pos.setY(Constants.SCREEN_HEIGHT-Constants.BALL_DIAMETER);
         }
       
         // Falls der Ball gegen die obere Grenze kommt prallt er nach unten ab
         if (pos.getY() < Constants.BALL_DIAMETER-Constants.BALL_DIAMETER){
         	direction.setDy(-direction.getDy());
+        	//Ball auf Wandberuehung zurucksetzen
         	pos.setY(Constants.BALL_DIAMETER-Constants.BALL_DIAMETER);
         }
         

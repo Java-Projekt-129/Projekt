@@ -25,7 +25,7 @@ public class Stone {
 	 */
 	private Rectangle hitBox;
 	/**
-	 * Der Konstrukot benötigt ein Long um die Positon und Typ der Steine zu speichern
+	 * Der Konstrukot benuetigt ein Long um die Positon und Typ der Steine zu speichern
 	 * @param type Der Typ der Steine
 	 * @param pos Die Position der Steine 
 	 */

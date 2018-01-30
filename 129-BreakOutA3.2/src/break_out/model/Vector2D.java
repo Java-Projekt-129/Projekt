@@ -17,7 +17,7 @@ public class Vector2D {
 	
 	private double dy;
 	
-	/** Konstuktor für die Koordinaten
+	/** Konstuktor fuer die Koordinaten
 	 * @param dx fuer die X Koordinaten
 	 * @param dy fuer die Y Koordianten
 	 */
@@ -39,7 +39,7 @@ public class Vector2D {
 	}
 	
 	/**
-	 * Rückgabe von dx
+	 * Rueckgabe von dx
 	 * @return dx der x Wert auf dem Spielfeld 
 	 */
 	public double getDx() {
@@ -47,7 +47,7 @@ public class Vector2D {
 	}
 	
 	/**
-	 * Rückgabe von dy
+	 * Rueckgabe von dy
 	 * @return dy der y Wert auf dem Spielfeld 
 	 */
 	public double getDy() {
@@ -70,7 +70,7 @@ public class Vector2D {
 		this.dy = dy;
 	}
 	/**
-	 * Funktion für das Normalisieren des Vektors 
+	 * Funktion fuer das Normalisieren des Vektors 
 	 */
 	public void rescale() {
 		
