@@ -81,54 +81,24 @@ public class Ball {
 	public Rectangle getHitBox() {
 		return hitBox;
 	}
-	
-	/**
-	 * Methode zum setzten des X Wertes damit der Ball nicht das Paddle durchdringen 
-	 * @return 0 auf 0 gesetzt damit der Ball nicht ins Paddle kommt 
-	 */
-	private double setX() {
-	
-	return 0;
-	}
-	/**
-	 * Methode Methode zum setzten des Y Wertes damit der Ball nicht das Paddle durchdringen  
-	 * @return 0 auf 0 gesetzt damit der Ball nicht ins Paddle kommt  
-	 */
-	private double setY() {
 		
-		return 0;
-	}
-		
-	
-	
 	/**
-	 * Boolean abfrage ob der Ball das Paddle beruerht  
-	 * @param p ist der Parameter fuer das Paddle 
-	 * @return hit rueckgabe ob der Ball das Padlle getroffen hat oder nicht
-	 * @param ballCenter der Mittelpunkt des Balles  
+	 * Booleanabfrage ob der Ball das Paddle breuhrt 
+	 * @param p ist der Parameter des Paddles  
+	 * @return Wahr oder Falsch in abheangigkeit ob der Ball trifft 
 	 */
 	public boolean hitsPaddle(Paddle p) {
-		//boolean abfrage fuer paddle beruehrung
-		boolean hit = false;
-		//Initialisierung und berrechnung der Ballposition
-		Position ball = new Position(pos.getX()+(Constants.BALL_DIAMETER/2), pos.getY()-(Constants.BALL_DIAMETER/2));
-		//Durchsprungverhalten verhindert durch setzten von x=0
-		new Position(setX()+(Constants.BALL_DIAMETER/2), pos.getX()-(Constants.BALL_DIAMETER/2));
-		//Durchsprungverhalten verhindert durch setzten von y=0
-		new Position(setY()+(Constants.BALL_DIAMETER/2), pos.getY()-(Constants.BALL_DIAMETER/2));
-		//Initialisierung und berrechnung der Paddleposition
-		Position paddleCenter = new Position(p.getPosition().getX()+(Constants.PADDLE_WIDTH/2), p.getPosition().getY()-(Constants.PADDLE_HEIGHT/2));
-		
-		//falls der mittelpunkt des Balles das Paddle beruerht 
-		if ((ball.getY()+Constants.BALL_DIAMETER/2) > paddleCenter.getY() - Constants.PADDLE_HEIGHT/2
-			&& Math.abs((paddleCenter.getX() - ball.getX())) < Constants.PADDLE_WIDTH/2) {
-			//falls hit wahr ist prallt der Ball  ab
-			hit = true;
-			//der Ball prallt vom Paddle ab  	  
-			 reflectOnPaddle(p);
+		if (pos.getY() + Constants.BALL_DIAMETER > Constants.SCREEN_HEIGHT - Constants.PADDLE_HEIGHT &&
+			pos.getX() + Constants.BALL_DIAMETER > p.getPosition().getX() &&
+			pos.getX() < p.getPosition().getX() + Constants.PADDLE_WIDTH) {
+			return true;
 		}
-		return hit;
+		else {
+			return false;
+		}
+		
 	}
+	
 
 	/**
 	 * Boolean abfrage ob der Ball die Steine beruhert 
@@ -211,7 +181,7 @@ public class Ball {
 	 * @param paddle beschreibt die positon des Paddles 
 	 */
 	public void reflectOnPaddle(Paddle paddle) {
-		Position ballCenter = new Position(pos.getX()+(Constants.BALL_DIAMETER/2), pos.getY()+(Constants.BALL_DIAMETER/2));
+		Position ballCenter = new Position(pos.getX()+(Constants.BALL_DIAMETER)/2, pos.getY()+(Constants.BALL_DIAMETER)/2);
 		Position paddleCenter = new Position(paddle.getPosition().getX()+(Constants.PADDLE_WIDTH/2), paddle.getPosition().getY()+(Constants.PADDLE_HEIGHT/2) + 3*Constants.PADDLE_HEIGHT);
 		direction = new Vector2D(paddleCenter, ballCenter);
 		direction.rescale();
