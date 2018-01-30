@@ -22,7 +22,7 @@ public class Ball {
 	private Position hitStoneIndex;
 	
 	/**
-	 * Dekleration der Variable dircetion vom Typ Vektor2D
+	 * Dekleration der Variable direcetion vom Typ Vektor2D
 	 */
 	private Vector2D direction;
 	/**
@@ -82,17 +82,40 @@ public class Ball {
 		return hitBox;
 	}
 	
+	/**
+	 * Methode zum setzten des X Wertes damit der Ball nicht das Paddle durchdringen 
+	 * @return 0 auf 0 gesetzt damit der Ball nicht ins Paddle kommt 
+	 */
+	private double setX() {
+	
+	return 0;
+	}
+	/**
+	 * Methode Methode zum setzten des Y Wertes damit der Ball nicht das Paddle durchdringen  
+	 * @return 0 auf 0 gesetzt damit der Ball nicht ins Paddle kommt  
+	 */
+	private double setY() {
+		
+		return 0;
+	}
+		
+	
 	
 	/**
 	 * Boolean abfrage ob der Ball das Paddle beruerht  
 	 * @param p in abheanigkeit von dem Ball welcher das Paddle beruehrt 
-	 * @return hit rueckgabe ob der Ball das Padlle getroffen hat oder nicht 
+	 * @return hit rueckgabe ob der Ball das Padlle getroffen hat oder nicht
+	 * @param ballCenter der Mittelpunkt des Balles  
 	 */
 	public boolean hitsPaddle(Paddle p) {
 		//boolean abfrage fuer paddle beruehrung
 		boolean hit = false;
 		//Initialisierung und berrechnung der Ballposition
 		Position ballCenter = new Position(pos.getX()+(Constants.BALL_DIAMETER/2), pos.getY()-(Constants.BALL_DIAMETER/2));
+		//Durchsprungverhalten verhindert durch setzten von  und  x=0
+		new Position(setX()+(Constants.BALL_DIAMETER/2), pos.getX()-(Constants.BALL_DIAMETER/2));
+		//Durchsprungverhalten verhindert durch setzten von  und y=0
+		new Position(setY()+(Constants.BALL_DIAMETER/2), pos.getY()-(Constants.BALL_DIAMETER/2));
 		//Initialisierung und berrechnung der Paddleposition
 		Position paddleCenter = new Position(p.getPosition().getX()+(Constants.PADDLE_WIDTH/2), p.getPosition().getY()-(Constants.PADDLE_HEIGHT/2));
 		
@@ -106,6 +129,7 @@ public class Ball {
 		}
 		return hit;
 	}
+
 	/**
 	 * Boolean abfrage ob der Ball die Steine beruhert 
 	 * @param stones Variable  der Steine
