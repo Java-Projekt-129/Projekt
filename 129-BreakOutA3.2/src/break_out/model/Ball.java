@@ -186,11 +186,16 @@ public class Ball {
 	 * @param paddle beschreibt die positon des Paddles 
 	 */
 	public void reflectOnPaddle(Paddle paddle) {
-		Position ballCenter = new Position(pos.getX()+(Constants.BALL_DIAMETER)/2, pos.getY()+(Constants.BALL_DIAMETER)/2);
-		Position paddleCenter = new Position(paddle.getPosition().getX()+(Constants.PADDLE_WIDTH/2), paddle.getPosition().getY()+(Constants.PADDLE_HEIGHT/2) + 3*Constants.PADDLE_HEIGHT);
-		direction = new Vector2D(paddleCenter, ballCenter);
+		// Erstellen eines Punktes auf dem Paddle von dem der Vektor Skaliert wird
+		Position source = new Position(paddle.getPosition().getX() + (Constants.PADDLE_WIDTH / 2), paddle.getPosition().getY() + 2*Constants.PADDLE_HEIGHT);
+		// Zielpunkt des Vektors
+		Position target = new Position(pos.getX() + Constants.BALL_DIAMETER / 2, pos.getY()+ Constants.BALL_DIAMETER / 2);
+		//Berechnug des neuen vektor aus Target Source und dem Ball 
+		direction = new Vector2D (source, target);
+		// Normierung des Richtungsvektors
 		direction.rescale();
 	}
+	
 	
 	/**
 	 * Void welches Abfragt wie sich der Ball bei beruerung mit den Steinen verhalten soll 
