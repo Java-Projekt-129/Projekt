@@ -103,7 +103,7 @@ public class Ball {
 	
 	/**
 	 * Boolean abfrage ob der Ball das Paddle beruerht  
-	 * @param p in abheanigkeit von dem Ball welcher das Paddle beruehrt 
+	 * @param p ist der Parameter fuer das Paddle 
 	 * @return hit rueckgabe ob der Ball das Padlle getroffen hat oder nicht
 	 * @param ballCenter der Mittelpunkt des Balles  
 	 */
@@ -111,17 +111,17 @@ public class Ball {
 		//boolean abfrage fuer paddle beruehrung
 		boolean hit = false;
 		//Initialisierung und berrechnung der Ballposition
-		Position ballCenter = new Position(pos.getX()+(Constants.BALL_DIAMETER/2), pos.getY()-(Constants.BALL_DIAMETER/2));
-		//Durchsprungverhalten verhindert durch setzten von  und  x=0
+		Position ball = new Position(pos.getX()+(Constants.BALL_DIAMETER/2), pos.getY()-(Constants.BALL_DIAMETER/2));
+		//Durchsprungverhalten verhindert durch setzten von x=0
 		new Position(setX()+(Constants.BALL_DIAMETER/2), pos.getX()-(Constants.BALL_DIAMETER/2));
-		//Durchsprungverhalten verhindert durch setzten von  und y=0
+		//Durchsprungverhalten verhindert durch setzten von y=0
 		new Position(setY()+(Constants.BALL_DIAMETER/2), pos.getY()-(Constants.BALL_DIAMETER/2));
 		//Initialisierung und berrechnung der Paddleposition
 		Position paddleCenter = new Position(p.getPosition().getX()+(Constants.PADDLE_WIDTH/2), p.getPosition().getY()-(Constants.PADDLE_HEIGHT/2));
 		
 		//falls der mittelpunkt des Balles das Paddle beruerht 
-		if (ballCenter.getY()+Constants.BALL_DIAMETER/2 > paddleCenter.getY() - Constants.PADDLE_HEIGHT/2
-			&& Math.abs((paddleCenter.getX() - ballCenter.getX())) < Constants.PADDLE_WIDTH/2) {
+		if ((ball.getY()+Constants.BALL_DIAMETER/2) > paddleCenter.getY() - Constants.PADDLE_HEIGHT/2
+			&& Math.abs((paddleCenter.getX() - ball.getX())) < Constants.PADDLE_WIDTH/2) {
 			//falls hit wahr ist prallt der Ball  ab
 			hit = true;
 			//der Ball prallt vom Paddle ab  	  
@@ -211,11 +211,11 @@ public class Ball {
 	 * @param paddle beschreibt die positon des Paddles 
 	 */
 	public void reflectOnPaddle(Paddle paddle) {
-		Position ballCenter = new Position(pos.getX()+(Constants.BALL_DIAMETER/2), pos.getY()+(Constants.BALL_DIAMETER/2));
+		Position ball = new Position(pos.getX()+(Constants.BALL_DIAMETER)/2, pos.getY()+(Constants.BALL_DIAMETER/2));
 		//Abfrage der Ballberuhrung beim Paddle 
 		Position paddleCenter = new Position(paddle.getPosition().getX() + (Constants.PADDLE_WIDTH/2), paddle.getPosition().getY() + 2*Constants.PADDLE_HEIGHT);
 		//Erzeugen des neuen Vektors
-		direction = new Vector2D(paddleCenter, ballCenter);
+		direction = new Vector2D(paddleCenter, ball);
 		// Normieren des Vektors
 		direction.rescale();
 	}
