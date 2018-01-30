@@ -211,12 +211,9 @@ public class Ball {
 	 * @param paddle beschreibt die positon des Paddles 
 	 */
 	public void reflectOnPaddle(Paddle paddle) {
-		Position ball = new Position(pos.getX()+(Constants.BALL_DIAMETER)/2, pos.getY()+(Constants.BALL_DIAMETER/2));
-		//Abfrage der Ballberuhrung beim Paddle 
-		Position paddleCenter = new Position(paddle.getPosition().getX() + (Constants.PADDLE_WIDTH/2), paddle.getPosition().getY() + 2*Constants.PADDLE_HEIGHT);
-		//Erzeugen des neuen Vektors
-		direction = new Vector2D(paddleCenter, ball);
-		// Normieren des Vektors
+		Position ballCenter = new Position(pos.getX()+(Constants.BALL_DIAMETER/2), pos.getY()+(Constants.BALL_DIAMETER/2));
+		Position paddleCenter = new Position(paddle.getPosition().getX()+(Constants.PADDLE_WIDTH/2), paddle.getPosition().getY()+(Constants.PADDLE_HEIGHT/2) + 3*Constants.PADDLE_HEIGHT);
+		direction = new Vector2D(paddleCenter, ballCenter);
 		direction.rescale();
 	}
 	/**
