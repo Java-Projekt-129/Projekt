@@ -9,6 +9,7 @@ import break_out.Constants;
  * @author Jan Erik Riede 675875
  * @author Lorenzo Dal Molin 678115
  * Gruppe 129
+ * Erstellt in Aufgabenteil 4
  */
 
 public class Stone {

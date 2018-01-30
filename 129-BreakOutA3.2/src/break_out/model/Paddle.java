@@ -7,6 +7,7 @@ import break_out.Constants;
  * @author Jan Erik Riede 675875 
  * @author Lorenzo Dal Molin 678115 
  * Abgabegruppe 129
+ * Erstellt in Aufgabenteil 2
  */
 public class Paddle {
 	

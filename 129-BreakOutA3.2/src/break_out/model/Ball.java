@@ -26,7 +26,7 @@ public class Ball {
 	 */
 	private Vector2D direction;
 	/**
-	 * Die Hitbox des Balles 
+	 * Deklaration der Hitbox des Balles 
 	 */
 	private Rectangle hitBox;
 	
