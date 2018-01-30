@@ -147,7 +147,7 @@ public class Ball {
         if (pos.getX() > Constants.SCREEN_WIDTH-Constants.BALL_DIAMETER){
         	//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
         	direction.setDx(-direction.getDx());
-        	//Auf die Wand zurucksetzten
+        	//Auf Wand zurucksetzten
         	pos.setX(Constants.SCREEN_WIDTH-Constants.BALL_DIAMETER);
                 
         }
