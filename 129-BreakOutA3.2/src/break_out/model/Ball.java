@@ -162,45 +162,42 @@ public class Ball {
 	/**
 	 * Methode zum verhalten an der Wandbruehrung
 	 */
-	public void reactOnBorder() {
+	public void reactOnBorder() { 	
 		
 		// hier das Abprallverhalten des Balls an den vier Waenden implementieren
     	
 		
-		// hier das Abprallverhalten des Balls an den vier Waenden implementieren
-    	
-		
-				// Falls der Ball gegen die Rechte Wand kommt prallt er nach links
-		        if (pos.getX() > Constants.SCREEN_WIDTH-Constants.BALL_DIAMETER){
-		        	//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
-		        	direction.setDx(-direction.getDx());
-		        	//Auf Wand zurucksetzten
-		        	pos.setX(Constants.SCREEN_WIDTH-Constants.BALL_DIAMETER);
+		// Falls der Ball gegen die Rechte Wand kommt prallt er nach links
+		if (pos.getX() > Constants.SCREEN_WIDTH-Constants.BALL_DIAMETER){
+		//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
+		direction.setDx(-direction.getDx());
+		//Auf Wand zurucksetzten
+		pos.setX(Constants.SCREEN_WIDTH-Constants.BALL_DIAMETER);
 		                
-		        }
+		}
 		    
-		        // Falls der Ball gegen die linke Grenze kommt prallt er nach rechts ab
-		        if (pos.getX() < Constants.BALL_DIAMETER-Constants.BALL_DIAMETER){
-		        	//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
-		        	direction.setDx(-direction.getDx());
-		        	//Auf den x Wert der Wand zurucksetzten
-		        	pos.setX(0);
-		        }
+		// Falls der Ball gegen die linke Grenze kommt prallt er nach rechts ab
+		if (pos.getX() < Constants.BALL_DIAMETER-Constants.BALL_DIAMETER){
+		//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
+		direction.setDx(-direction.getDx());
+		//Auf den x Wert der Wand zurucksetzten
+		pos.setX(0);
+		}
 		      
-		       // Falls der Ball gegen die untere Grenze kommt prallt er nach oben ab
-		        if (pos.getY() > Constants.SCREEN_HEIGHT-Constants.BALL_DIAMETER){
-		        	//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
-		        	direction.setDy(-direction.getDy());
-		        	//Auf die Wand zurucksetzten
-		        	pos.setY(Constants.SCREEN_HEIGHT - Constants.BALL_DIAMETER);
-		        }
+		// Falls der Ball gegen die untere Grenze kommt prallt er nach oben ab
+		if (pos.getY() > Constants.SCREEN_HEIGHT-Constants.BALL_DIAMETER){
+		//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
+		direction.setDy(-direction.getDy());
+		//Auf die Wand zurucksetzten
+		pos.setY(Constants.SCREEN_HEIGHT - Constants.BALL_DIAMETER);
+		}
 		      
-		        // Falls der Ball gegen die obere Grenze kommt prallt er nach unten ab
-		        if (pos.getY() < Constants.BALL_DIAMETER-Constants.BALL_DIAMETER){
-		        	//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
-		        	direction.setDy(-direction.getDy());
-		        	//Auf den y Wert der Wand zurucksetzten
-		        	pos.setY(0); 
+		// Falls der Ball gegen die obere Grenze kommt prallt er nach unten ab
+		if (pos.getY() < Constants.BALL_DIAMETER-Constants.BALL_DIAMETER){
+		//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
+		direction.setDy(-direction.getDy());
+		//Auf den y Wert der Wand zurucksetzten
+		pos.setY(0); 
 		        	
 		        }
         
