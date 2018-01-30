@@ -6,27 +6,32 @@ import break_out.Constants;
 
 /**
  * Diese Klasse representiert die Steine im Spiel
+ * 
  * @author Jan Erik Riede 675875
  * @author Lorenzo Dal Molin 678115
+ * 
  * Gruppe 129
  * Erstellt in Aufgabenteil 4
  */
-
 public class Stone {
+	
 	/**
-	 *  Der Typ des Steins 
+	 *  Dekleration der Variable type  welche den Typ des Steins beschreibt
 	 */
 	private long type;
+	
 	/**
-	 * Die Postion der Steine 
+	 * Dekleration von der Variable Pos die die Postion der Steine beschreibt
 	 */
 	private Position pos;
+	
 	/**
-	 * Die Hitbox der Steine 
+	 * Die Deklaeration der Variable hitBox die die Hitbox der Steine beschreibt
 	 */
 	private Rectangle hitBox;
+	
 	/**
-	 * Der Konstrukot benuetigt ein Long um die Positon und Typ der Steine zu speichern
+	 * Der Konstrukot benoetigt ein Long um die Positon und Typ der Steine zu speichern
 	 * @param type Der Typ der Steine
 	 * @param pos Die Position der Steine 
 	 */
@@ -42,6 +47,7 @@ public class Stone {
 				(int)Constants.STONE_HEIGHT);
 				
 	}
+	
 	/**
 	 * Setter fuer den typ der Steine
 	 * @param type der neue Steintyp

@@ -3,14 +3,19 @@ package break_out.model;
 import break_out.Constants;
 
 /**
- * Diese Klasse beschreibt das verhalten des Paddles 
+ * Diese Klasse beschreibt das verhalten des Paddles
+ * 
  * @author Jan Erik Riede 675875 
  * @author Lorenzo Dal Molin 678115 
+ * 
  * Abgabegruppe 129
  * Erstellt in Aufgabenteil 2
  */
 public class Paddle {
 	
+	/**
+	 * Dekleration der Variable pos welche die Position des Paddles beschreibt
+	 */
 	private Position pos;
 	
 	/**
@@ -29,7 +34,9 @@ public class Paddle {
 		return pos;
 	}
 	
-	
+	/**
+	 * Dekleration der Variable direction welche die Richtung beschreibt in die sich das Paddle bewegt
+	 */
 	private int direction;
 	
 	/**
@@ -53,6 +60,7 @@ public class Paddle {
 	 * nach links oder Rechts aendert und die Position updated
 	 */
 	public void updatePosition() {
+		
 		//if else abfrage fuer richtung wenn dircetion = -1 bewegung nach links
 		if (direction == -1) {
 			moveLeft();

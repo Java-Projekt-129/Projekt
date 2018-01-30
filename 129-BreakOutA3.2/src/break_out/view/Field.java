@@ -153,7 +153,7 @@ public class Field extends JPanel {
 		}
 	}
 	/**
-	 * Zeichnet die Steine mit der for Schleife und liesst das Muster aus 
+	 * Zeichnet die Steine mit der for Schleife und liest das Muster aus 
 	 * @param g2 fuer das zeichnen der Steine 
 	 */
 	private void drawStones(Graphics2D g2) {
@@ -165,7 +165,7 @@ public class Field extends JPanel {
 				//der Reader stoppt nur wenn der wert 1 erreicht wird nicht null 
 				if (view.getGame().getLevel().getStones().get(y).get(x) != null) {
 					if (view.getGame().getLevel().getStones().get(y).get(x).getType() == 1) {
-						//fuellt den stein in anhengingkeit der postion und des types 
+						//fuellt den stein in anbengingkeit der postion und des types 
 						g2.fillRect((int)view.getGame().getLevel().getStones().get(y).get(x).getPosition().getX(),
 									(int)view.getGame().getLevel().getStones().get(y).get(x).getPosition().getY(),
 									(int)Constants.STONE_WIDTH,
@@ -175,6 +175,7 @@ public class Field extends JPanel {
 			}
 		}
 	}
+	
 	/**
 	 * Zeichnet den Spielstandt mit hilfe des View objektes 
 	 * @param g2 Graphics g2 rendert den Score  

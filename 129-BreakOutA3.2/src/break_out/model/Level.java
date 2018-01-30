@@ -14,6 +14,7 @@ import break_out.controller.JSONReader;
  * modified by 	Jan Erik Riede - 675875
  * modified by 	Lorenzo Dal Molin - 678115
  * Gruppe 129
+ * Die Klasse wurde von der Gruppe 129 im zuge verschiedener Aufgabenteile bearbeitet
  */
 public class Level extends Thread {
 
@@ -161,9 +162,7 @@ public class Level extends Thread {
     	 //game informiert den observer dass das Spiel gestartet wird
     	game.notifyObservers();
     		
-    	/**
-    	 *  Endlosschleife fuer den Ablauf
-    	 */
+    	//Endlosschleife fuer den Ablauf
     	while (true) {
     		
     		//wenn ballWasStarted wahr ist wird Methoden updatePostion reactOnBoarder hitsPaddle, hitStones ausgefuhrt 
@@ -259,7 +258,3 @@ public class Level extends Thread {
     }
     
 }
-    
-
-
-	
