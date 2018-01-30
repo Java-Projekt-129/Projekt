@@ -50,11 +50,11 @@ public class Level extends Thread {
      * Instanzierung des Paddles
      */
     private Paddle paddle;
+    
     /**
      * Erstellt eine neue Steineliste 
      */
-  
-    private List<List<Stone>> stones = new ArrayList<List<Stone>>();
+     private List<List<Stone>> stones = new ArrayList<List<Stone>>();
   
         
     /**
@@ -89,10 +89,10 @@ public class Level extends Thread {
      * Getter fuer den ball
      * @return ball rueckgabe des Balles 
      */
-    
     public Ball getBall() {
         return ball;
     }
+    
     /**
      * Getter fuer das Paddle
      * @return Paddle rueckgabe des Paddles 
@@ -100,6 +100,7 @@ public class Level extends Thread {
     public Paddle getPaddle() {
     	return paddle;
     }
+    
     /**
      * Getter fuer die Steine
      * @return Stones ruckgabe von dem Stein 
@@ -107,6 +108,7 @@ public class Level extends Thread {
     public List<List<Stone>> getStones(){
     	return stones;
     }
+    
     /**
      * Getter fuer den Score
      * @return Score der erreichte Score 
@@ -138,6 +140,7 @@ public class Level extends Thread {
     public boolean ballWasStarted() {
         return ballWasStarted;
     }
+    
     /**
      * Diese Methode updatet den Gamescore und die Steinmatrix 
      * @param hitStoneIndex Die der getroffenen Steine in der Matrix 
@@ -165,7 +168,7 @@ public class Level extends Thread {
     	 */
     	while (true) {
     		
-    		//wenn ballWasStarted wahr ist wird Methoden updatePostion reactOnBoarder hitsPaddle, hitStones aushefuhrt 
+    		//wenn ballWasStarted wahr ist wird Methoden updatePostion reactOnBoarder hitsPaddle, hitStones ausgefuhrt 
 	        if (ballWasStarted) {
 	        	
 	        	//Der Ball wird auf seine Postition ueberprueft
@@ -218,18 +221,20 @@ public class Level extends Thread {
     /**
     * Zugriff auf die der Levelnummer zugeordnete JSON-Datei
     * Der Reader fuer die JSONReader datei zum zeichnen des Steinmusters
+    * 
+    * Laedt die Datei JSOnreader und specihert ihn als String
+    * 
     * @param levelnr Die Nummer X fuer die LevelX.json Datei
     * @param levelnr die Nummer des aktuellen Levels
+    * 
+    * @param levelnr das erreichte Level 
     */
-    /**
-     * Laedt die Datei JSOnreader und specihert ihn als String 
-     * @param levelnr das erreichte Level 
-     */
     private void loadLevelData(int levelnr) {
     	String path = "res/Level" + levelnr + ".json";
     	JSONReader reader = new JSONReader(path);
     	
     	//Erstellt ein neues Stein-Objekt nach der vorgabe des Arrays aus Json Reader . 
+    	
     	/**
     	 * Diese for schleife sorgt fuer das zeichenen der Steine in abhangingkeit von den Konstanten
     	 */

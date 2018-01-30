@@ -6,16 +6,17 @@ import break_out.Constants;
 
 /**
  * Diese Klasse beschreibt das verhalten des Balles 
+ * (Erstellt im Aufgabenteil 2)
  * @author Jan Erik Riede 675875, Lorenzo Dal Molin 678115 
  * Gruppe 129
  */
-
 public class Ball {
 	
 	/**
 	 * Dekleration der Variable pos vom Typ position
 	 */
 	private Position pos;
+	
 	/**
 	 * Der Index der getroffenen Steine in der Matrix 
 	 */
@@ -25,6 +26,7 @@ public class Ball {
 	 * Dekleration der Variable direcetion vom Typ Vektor2D
 	 */
 	private Vector2D direction;
+	
 	/**
 	 * Deklaration der Hitbox des Balles 
 	 */
@@ -59,6 +61,7 @@ public class Ball {
 	public Position getPosition() {
 		return pos;
 	}
+	
 	/**
 	 * Getter fuer die getroffenen Steine in der Matrix
 	 * @return hitStoneIndex ob der Ball getroffen wurde 
@@ -74,6 +77,7 @@ public class Ball {
 	public Vector2D getDirection() {
 		return direction;
 	}
+	
 	/**
 	 * Getter fuer die Hitbox des Balles 
 	 * @return hitbox Die Hitbox des Balles 
@@ -120,6 +124,7 @@ public class Ball {
 			}
 		return hit;
 	}
+	
 	/**
 	 * Methode zum ermittlen der neuen Ballposition so wie der Hitbox
 	 */
@@ -186,6 +191,7 @@ public class Ball {
 		direction = new Vector2D(paddleCenter, ballCenter);
 		direction.rescale();
 	}
+	
 	/**
 	 * Void welches Abfragt wie sich der Ball bei beruerung mit den Steinen verhalten soll 
 	 * @param hitStone Der Stein an dem der Ball abprallt 
