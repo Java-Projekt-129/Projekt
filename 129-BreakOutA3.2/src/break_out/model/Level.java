@@ -199,7 +199,7 @@ public class Level extends Thread {
 	            
 	            //Paddle wird aufgefordert seine Postion abzufragen 
 	            paddle.updatePosition();
-	            //Paddle wird aufgefordert auf Wandberuerhung
+	            //Paddle wird aufgefordert auf Wandberuerhung abzufragen
 	            paddle.reactOnBorder();
 	                
 	        }

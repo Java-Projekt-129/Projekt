@@ -8,7 +8,7 @@ import break_out.Constants;
  * Diese Klasse representiert die Steine im Spiel
  * @author Jan Erik Riede 675875
  * @author Lorenzo Dal Molin 678115
- *Gruppe 129
+ * Gruppe 129
  */
 
 public class Stone {
@@ -33,7 +33,7 @@ public class Stone {
 		this.type = type;
 		this.pos = pos;
 		
-		//erstellt eine neue Hitbox fuer die Steine 
+		//erstellt eine neue Hitbox fuer die Steine		
 		this.hitBox = new Rectangle(
 				(int)pos.getX(), 
 				(int)pos.getY(),

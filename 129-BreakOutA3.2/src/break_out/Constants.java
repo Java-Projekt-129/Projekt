@@ -75,7 +75,7 @@ public class Constants {
     public static final int STONE_OFFSET_X = 2;
     
     /**
-     * Die Y Psotion der Steine berechnet im Mittelpunkt 
+     * Die Y Postion der Steine berechnet im Mittelpunkt 
      */
     public static final int STONE_OFFSET_Y = 2;
     
