@@ -5,7 +5,7 @@ import java.awt.Color;
 /**
  * A class that contains all constant values to configure the game
  * 
- * @author dmlux,modified by I. Schumacher. modified by Jan Erik Riede 675875, modified by Lorenzo Dal Molin 675115 
+ * @author dmlux,modified by I. Schumacher, modified by Jan Erik Riede 675875, modified by Lorenzo Dal Molin 675115 
  * 
  */
 public class Constants {
