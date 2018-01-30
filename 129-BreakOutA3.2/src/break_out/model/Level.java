@@ -158,9 +158,7 @@ public class Level extends Thread {
      */
     public void run() {
     	
-    	/**
-    	 * game informiert den observer dass das Spiel gestartet wird
-    	 */
+    	 //game informiert den observer dass das Spiel gestartet wird
     	game.notifyObservers();
     		
     	/**
@@ -233,14 +231,15 @@ public class Level extends Thread {
     	String path = "res/Level" + levelnr + ".json";
     	JSONReader reader = new JSONReader(path);
     	
+    	
     	//Erstellt ein neues Stein-Objekt nach der vorgabe des Arrays aus Json Reader . 
     	
-    	/**
-    	 * Diese for schleife sorgt fuer das zeichenen der Steine in abhangingkeit von den Konstanten
-    	 */
+
+    	//Diese for schleife sorgt fuer das zeichenen der Steine in abhangingkeit von y6
     	for(int y = 0; y < reader.getStonesListOfLists().size(); y++) {
     		//hinzufuegen der Steine zum der Array Liste 
     		stones.add(y, new ArrayList<Stone>());
+    		//Diese for schleife sorgt fuer das zeichenen der Steine in abhangingkeit von x
     		for (int x = 0; x < reader.getStonesListOfLists().get(y).size(); x++) {
     			//Falls der Reader den Wert 1 erreicht stoppt die Schleife 
     			if (reader.getStonesListOfLists().get(y).get(x)==1) {
