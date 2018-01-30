@@ -107,11 +107,11 @@ public class Game{
     		level = new Level(this, levelnr, score);
     		// ruft die run-Methode des neuen Level-Objektes auf
         	level.start();
-            // ruft Methode des Controlers auf, um auf das Spielfeld umzuschalten
+            // ruft Methode des Controllers auf, um auf das Spielfeld umzuschalten
             controller.toPlayground();
     	}
     	else {
-    		// ruft Methode des Controlers auf, um bei Spielende auf den Startscreen umzuschalten
+    		// ruft Methode des Controllers auf, um bei Spielende auf den Startscreen umzuschalten
     		controller.toStartScreen();
     		
     	}

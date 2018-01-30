@@ -1,4 +1,5 @@
 package break_out.model;
+
 /**
  * This object represents a position within the board in pixel coordinates
  * 

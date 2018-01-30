@@ -109,7 +109,7 @@ public class Controller implements ActionListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
     	
-    	// Startet oder Stoppt den Ball wenn Leertaste gedrückt wird
+    	// Startet oder Stoppt den Ball wenn Leertaste gedrueckt wird
     	if (e.getKeyCode() == KeyEvent.VK_SPACE) {
         	if (game.getLevel().ballWasStarted()) {
         		game.getLevel().stopBall();

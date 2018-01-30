@@ -1,13 +1,13 @@
 
 package break_out.model;
 import break_out.Constants;
+
 /**
  * Diese Klasse beschreibt das verhalten des Paddles 
  * @author Jan Erik Riede 675875 
  * @author Lorenzo Dal Molin 678115 
  * Abgabegruppe 129
  */
-
 public class Paddle {
 	
 	private Position pos;
@@ -52,7 +52,7 @@ public class Paddle {
 	 * nach links oder Rechts aendert und die Position updated
 	 */
 	public void updatePosition() {
-		//if else abfrage für richtung wenn dircetion = -1 bewegung nach links
+		//if else abfrage fuer richtung wenn dircetion = -1 bewegung nach links
 		if (direction == -1) {
 			moveLeft();
 		}

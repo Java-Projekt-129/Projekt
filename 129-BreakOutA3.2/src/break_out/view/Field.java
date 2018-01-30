@@ -153,7 +153,7 @@ public class Field extends JPanel {
 		}
 	}
 	/**
-	 * Zeichnet die Steine mit der for Schleife und ließt das Muster aus 
+	 * Zeichnet die Steine mit der for Schleife und liesst das Muster aus 
 	 * @param g2 fuer das zeichnen der Steine 
 	 */
 	private void drawStones(Graphics2D g2) {

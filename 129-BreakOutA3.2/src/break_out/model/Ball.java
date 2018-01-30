@@ -22,7 +22,7 @@ public class Ball {
 	private Position hitStoneIndex;
 	
 	/**
-	 * Dekleration der Variable dircetion vom Typ Vektor2D
+	 * Dekleration der Variable direcetion vom Typ Vektor2D
 	 */
 	private Vector2D direction;
 	/**
@@ -31,12 +31,12 @@ public class Ball {
 	private Rectangle hitBox;
 	
 	/**
-	 * Kostruktoren für die Position und Richtung des Balls
+	 * Kostruktoren fuer die Position und Richtung des Balls
 	 * sowie normierung seines Richtungsvektors
 	 * Kontruktor fuer die Hitbox des Balles 
 	 * @param pos Postion des Balles  
 	 * @param direction Richtung des Balles 
-	 * @param hitStoneIndex Beschreibt ob der Ball getroffen hat 
+	 * 
 	 */
 	public Ball(Position pos, Vector2D direction) {
 		this.pos = pos;
@@ -82,17 +82,40 @@ public class Ball {
 		return hitBox;
 	}
 	
+	/**
+	 * Methode zum setzten des X Wertes damit der Ball nicht das Paddle durchdringen 
+	 * @return 0 auf 0 gesetzt damit der Ball nicht ins Paddle kommt 
+	 */
+	private double setX() {
+	
+	return 0;
+	}
+	/**
+	 * Methode Methode zum setzten des Y Wertes damit der Ball nicht das Paddle durchdringen  
+	 * @return 0 auf 0 gesetzt damit der Ball nicht ins Paddle kommt  
+	 */
+	private double setY() {
+		
+		return 0;
+	}
+		
+	
 	
 	/**
 	 * Boolean abfrage ob der Ball das Paddle beruerht  
 	 * @param p in abheanigkeit von dem Ball welcher das Paddle beruehrt 
-	 * @return hit rueckgabe ob der Ball das Padlle getroffen hat oder nicht 
+	 * @return hit rueckgabe ob der Ball das Padlle getroffen hat oder nicht
+	 * @param ballCenter der Mittelpunkt des Balles  
 	 */
 	public boolean hitsPaddle(Paddle p) {
-		//boolean abfrage für paddle berührung
+		//boolean abfrage fuer paddle beruehrung
 		boolean hit = false;
 		//Initialisierung und berrechnung der Ballposition
 		Position ballCenter = new Position(pos.getX()+(Constants.BALL_DIAMETER/2), pos.getY()-(Constants.BALL_DIAMETER/2));
+		//Durchsprungverhalten verhindert durch setzten von  und  x=0
+		new Position(setX()+(Constants.BALL_DIAMETER/2), pos.getX()-(Constants.BALL_DIAMETER/2));
+		//Durchsprungverhalten verhindert durch setzten von  und y=0
+		new Position(setY()+(Constants.BALL_DIAMETER/2), pos.getY()-(Constants.BALL_DIAMETER/2));
 		//Initialisierung und berrechnung der Paddleposition
 		Position paddleCenter = new Position(p.getPosition().getX()+(Constants.PADDLE_WIDTH/2), p.getPosition().getY()-(Constants.PADDLE_HEIGHT/2));
 		
@@ -106,6 +129,7 @@ public class Ball {
 		}
 		return hit;
 	}
+
 	/**
 	 * Boolean abfrage ob der Ball die Steine beruhert 
 	 * @param stones Variable  der Steine
@@ -143,38 +167,42 @@ public class Ball {
 		// hier das Abprallverhalten des Balls an den vier Waenden implementieren
     	
 		
-		// Falls der Ball gegen die Rechte Wand kommt prallt er nach links
-        if (pos.getX() > Constants.SCREEN_WIDTH-Constants.BALL_DIAMETER){
-        	//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
-        	direction.setDx(-direction.getDx());
-        	//Auf Wand zurucksetzten
-        	pos.setX(Constants.SCREEN_WIDTH-Constants.BALL_DIAMETER);
-                
-        }
-    
-        // Falls der Ball gegen die linke Grenze kommt prallt er nach rechts ab
-        if (pos.getX() < Constants.BALL_DIAMETER-Constants.BALL_DIAMETER){
-        	//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
-        	direction.setDx(-direction.getDx());
-        	//Auf den x Wert der Wand zurucksetzten
-        	pos.setX(0);
-        }
-      
-       // Falls der Ball gegen die untere Grenze kommt prallt er nach oben ab
-        if (pos.getY() > Constants.SCREEN_HEIGHT-Constants.BALL_DIAMETER){
-        	//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
-        	direction.setDy(-direction.getDy());
-        	//Auf die Wand zurucksetzten
-        	pos.setY(Constants.SCREEN_HEIGHT - Constants.BALL_DIAMETER);
-        }
-      
-        // Falls der Ball gegen die obere Grenze kommt prallt er nach unten ab
-        if (pos.getY() < Constants.BALL_DIAMETER-Constants.BALL_DIAMETER){
-        	//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
-        	direction.setDy(-direction.getDy());
-        	//Auf den y Wert der Wand zurucksetzten
-        	pos.setY(0); 
-        }
+		// hier das Abprallverhalten des Balls an den vier Waenden implementieren
+    	
+		
+				// Falls der Ball gegen die Rechte Wand kommt prallt er nach links
+		        if (pos.getX() > Constants.SCREEN_WIDTH-Constants.BALL_DIAMETER){
+		        	//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
+		        	direction.setDx(-direction.getDx());
+		        	//Auf Wand zurucksetzten
+		        	pos.setX(Constants.SCREEN_WIDTH-Constants.BALL_DIAMETER);
+		                
+		        }
+		    
+		        // Falls der Ball gegen die linke Grenze kommt prallt er nach rechts ab
+		        if (pos.getX() < Constants.BALL_DIAMETER-Constants.BALL_DIAMETER){
+		        	//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
+		        	direction.setDx(-direction.getDx());
+		        	//Auf den x Wert der Wand zurucksetzten
+		        	pos.setX(0);
+		        }
+		      
+		       // Falls der Ball gegen die untere Grenze kommt prallt er nach oben ab
+		        if (pos.getY() > Constants.SCREEN_HEIGHT-Constants.BALL_DIAMETER){
+		        	//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
+		        	direction.setDy(-direction.getDy());
+		        	//Auf die Wand zurucksetzten
+		        	pos.setY(Constants.SCREEN_HEIGHT - Constants.BALL_DIAMETER);
+		        }
+		      
+		        // Falls der Ball gegen die obere Grenze kommt prallt er nach unten ab
+		        if (pos.getY() < Constants.BALL_DIAMETER-Constants.BALL_DIAMETER){
+		        	//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
+		        	direction.setDy(-direction.getDy());
+		        	//Auf den y Wert der Wand zurucksetzten
+		        	pos.setY(0); 
+		        	
+		        }
         
 		
 	}
