@@ -130,6 +130,7 @@ public class Controller implements ActionListener, KeyListener {
     		game.getLevel().getPaddle().setDirection(1);
     	}
     	
+    	
     }
 
     /**
@@ -142,9 +143,17 @@ public class Controller implements ActionListener, KeyListener {
     	if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT) {
     		game.getLevel().getPaddle().setDirection(0);
     	}
+    	
+    	/**
+    	 * If Abfrage ob die Escape Taste gedrueckt wurde falls ja erfolgt das umschalten
+    	 */
+    if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+		view.showScreen(StartScreen.class.getName());
+    	view.getStartScreen().requestFocusInWindow();
+    	game.removeObserver(view);;
+    	
     }
-
-    
+	}
     /**
      * Mit dieser Methode erfolgt das Umschalten vom Spielfeld zum StartScreen
      */
