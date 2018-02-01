@@ -3,6 +3,7 @@ import java.awt.Rectangle;
 import java.util.List;
 
 import break_out.Constants;
+import break_out.view.StartScreen;
 
 /**
  * Diese Klasse beschreibt das verhalten des Balles 
@@ -164,7 +165,7 @@ public class Ball {
 		//Spiegeln der Vektoren Einfallswinkel=Aussfallswinkel
 		direction.setDy(-direction.getDy());
 		//Auf die Wand zurucksetzten
-		pos.setY(Constants.SCREEN_HEIGHT - Constants.BALL_DIAMETER);
+			 
 		}
 		      
 		// Falls der Ball gegen die obere Grenze kommt prallt er nach unten ab
@@ -178,6 +179,17 @@ public class Ball {
         
 		
 	}
+	//public boolean Wand () {
+	
+		//if (pos.getY() > Constants.SCREEN_HEIGHT-Constants.BALL_DIAMETER){
+			
+		//}
+			//return true ;
+		 
+		
+		
+	//}
+	
 	
 	/**
 	 * Abfrage ob der Ball das Paddle beruehrt.

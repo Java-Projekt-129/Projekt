@@ -148,18 +148,20 @@ public class Controller implements ActionListener, KeyListener {
     	 * If Abfrage ob die Escape Taste gedrueckt wurde falls ja erfolgt das umschalten
     	 */
     if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-		view.showScreen(StartScreen.class.getName());
-    	view.getStartScreen().requestFocusInWindow();
-    	game.removeObserver(view);;
+		
+    	toStartScreen();
     	
-    }
+    	
+    	}
+    
 	}
     /**
-     * Mit dieser Methode erfolgt das Umschalten vom Spielfeld zum StartScreen
+     * Mit dieser Methode erfolgt das Umschalten vom Spielfeld zum StartScreen um remove Observer erweitert 
      */
     public void toStartScreen() {
     	view.showScreen(StartScreen.class.getName());
     	view.getStartScreen().requestFocusInWindow();
+    	
     }
     
     /**

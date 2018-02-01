@@ -41,6 +41,10 @@ public class Level extends Thread {
      * Ball auf false gesetzt damit erst mit Space das Spiel gestartet wird
      */
     private boolean ballWasStarted = false;
+    /**
+     * Abbruch bedingung fuer die Whileschleife 
+     */
+    private boolean Abbruch= false ;
     
     /**
      * Instanzierung des Balls
@@ -163,7 +167,7 @@ public class Level extends Thread {
     	game.notifyObservers();
     		
     	//Endlosschleife fuer den Ablauf
-    	while (true) {
+    	while (Abbruch) {
     		
     		//wenn ballWasStarted wahr ist wird Methoden updatePostion reactOnBoarder hitsPaddle, hitStones ausgefuhrt 
 	        if (ballWasStarted) {
