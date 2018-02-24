@@ -230,6 +230,19 @@ public class Ball {
 		else if (pos.getY() + Constants.BALL_DIAMETER/2 > hitStone.getPosition().getY()+Constants.STONE_HEIGHT) {
 			direction.setDy(-direction.getDy());
 		}
+		/**
+		 * Void welches die Ballberuehrung mit der unteren Wand abfragt 
+		 */
+		
+		public boolean hitsBottom() {
+		
+			boolean hit = false;
+			//falls der Ball die untere Grenze trifft 
+	        if (pos.getY()>Constants.SCREEN_HEIGHT-Constants.BALL_DIAMETER){
+	        	hit = true;
+	        }
+	        return hit;
+		}
 	}
 }
 	

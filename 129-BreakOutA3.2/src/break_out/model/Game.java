@@ -9,7 +9,7 @@ import break_out.view.View;
 /**
  * This object contains information about the game (the model in MVC)
  * 
- * @author dmlux, modified by I. Schumacher
+ * @author dmlux, modified by I. Schumacher, modified by Jan Erik Riede 675875 , modified by Lorenzo Dal Molin 
  * 
  */
 public class Game{
@@ -37,7 +37,7 @@ public class Game{
     /**
      * The last levelnumber
      */
-    private int maxLevel = 1;  
+    private int maxLevel = 2;  
        
     /**
 	 * The total score of the game
